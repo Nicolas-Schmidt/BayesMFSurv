@@ -8,7 +8,8 @@ using std::abs;
 using std::sqrt;
 using std::pow;
 
-using namespace Rcpp; 
+using namespace Rcpp;
+
 
 
 // **********************************************************//
@@ -16,7 +17,7 @@ using namespace Rcpp;
 // **********************************************************//
 // [[Rcpp::export]]
 double llikWeibull (arma::vec Y,
-                    arma::vec eXB, 
+                    arma::vec eXB,
                     arma::vec alpha,
                     arma::vec C,
                     double lambda) {
@@ -25,7 +26,7 @@ double llikWeibull (arma::vec Y,
   arma::vec dexp3 = pow(eXB % Y, lambda);
   arma::vec llik1 = (1 - alpha) % dexp1 + lambda * alpha % eXB % dexp2 % dexp1;
   arma::vec lalpha = log(1 - alpha);
-  
+
   arma::uvec ids0 = find(llik1 == 0);
   llik1.elem(ids0).fill(exp(-740));
   arma::uvec ids1 = find(llik1 == arma::datum::inf);
@@ -45,7 +46,7 @@ double llikWeibull (arma::vec Y,
 // [[Rcpp::export]]
 double llikWeibull2(arma::vec Y,
                     arma::vec Y0,
-					          arma::vec eXB, 
+					          arma::vec eXB,
 				          	arma::vec alpha,
 				          	arma::vec C,
 					          double lambda) {
@@ -57,9 +58,9 @@ double llikWeibull2(arma::vec Y,
   arma::vec dexp0 = pow(eXB % Y0, lambda);
   arma::vec dexp4 = exp(dexp0);
   arma::uvec ids5 = find(dexp0 == arma::datum::inf);
-  dexp0.elem(ids5).fill(exp(700));  
+  dexp0.elem(ids5).fill(exp(700));
   arma::uvec ids4 = find(dexp4 == arma::datum::inf);
-  dexp4.elem(ids4).fill(exp(700));  
+  dexp4.elem(ids4).fill(exp(700));
   arma::vec dexp1 = exp(-pow(eXBY, lambda));
 	arma::vec dexp2 = pow(eXBY, lambda - 1);
 	arma::uvec ids6 = find(dexp2 == arma::datum::inf);
@@ -72,7 +73,7 @@ double llikWeibull2(arma::vec Y,
 	llik1.elem(ids0).fill(exp(-740));
 	arma::uvec ids2 = find(dexp3 == arma::datum::inf);
 	dexp3.elem(ids2).fill(exp(700));
-	
+
 	arma::vec llik = C % log(llik1) + (1 - C) % (log(alpha) - dexp3 + dexp0);
 	return sum(llik);
 }

@@ -18,8 +18,8 @@ Imports:
 	Rcpp,
 	RcppArmadillo,
 	coda, 
-	mvtnorm
-LinkingTo:
-	Rcpp,
-	RcppArmadillo
+	mvtnorm,
+LinkingTo: 
+    Rcpp, 
+    RcppArmadillo
 RoxygenNote: 7.0.2
