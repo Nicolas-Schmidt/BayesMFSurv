@@ -1,0 +1,10 @@
+## Test environments
+* local Windows, R 3.6.1
+* ubuntu 18.04, R 3.5.0
+* R-devel build for Windows (which will eventually become R-4.0.0)
+
+## R CMD check results
+
+0 errors | 0 warnings | 0 note
+
+
