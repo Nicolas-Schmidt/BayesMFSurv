@@ -1,7 +1,6 @@
 ## resubmission
 
-1 Note: "Package in Depends/Imports which should probably only be in LinkingTo: 'RcppArmadillo'"
-It is necessary that both packages are in 'LinkingTo'. Otherwise the package is broken.
+Fixed dependency conflict with 'RcppArmadillo'.
 
 ## Test environments
 * local Windows, R 3.6.1
@@ -10,7 +9,7 @@ It is necessary that both packages are in 'LinkingTo'. Otherwise the package is 
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 note
 
 
 
