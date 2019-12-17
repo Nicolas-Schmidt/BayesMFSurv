@@ -15,7 +15,7 @@
 # @param form type of parametric model (Exponential or Weibull)
 # @return One sample update using slice sampling
 
-betas.slice.sampling2 = function(Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, form){
+betas.slice.sampling2 <- function(Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, form){
 
   p1 = length(betas)
   for (p in sample(1:p1, p1, replace = FALSE)) {
@@ -44,7 +44,7 @@ betas.slice.sampling2 = function(Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, 
 # @param form type of parametric model (Exponential or Weibull)
 # @return One sample update using slice sampling
 
-univ.betas.slice.sampling2 = function(betas.p, p, Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, lower = -Inf, upper = +Inf, form){
+univ.betas.slice.sampling2 <- function(betas.p, p, Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, lower = -Inf, upper = +Inf, form){
 
   b0 = betas.p
   b.post0 = betas.post2(b0, p, Sigma.b, Y, Y0, X, betas, alpha, C, lambda, form)
@@ -122,7 +122,7 @@ univ.betas.slice.sampling2 = function(betas.p, p, Sigma.b, Y, Y0, X, betas, alph
 # @param form type of parametric model (Exponential or Weibull)
 # @return One sample update using slice sampling
 
-gammas.slice.sampling2 = function(Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w, m, form){
+gammas.slice.sampling2 <- function(Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w, m, form){
 
   p2 = length(gammas)
   for (p in sample(1:p2, p2, replace = FALSE)) {
@@ -152,7 +152,7 @@ gammas.slice.sampling2 = function(Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w, 
 # @return One sample update using slice sampling
 
 
-univ.gammas.slice.sampling2 = function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w, m, lower = -Inf, upper = +Inf, form){
+univ.gammas.slice.sampling2 <- function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w, m, lower = -Inf, upper = +Inf, form){
 
   g0 = gammas.p
   g.post0 = gammas.post2(g0, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, form)
@@ -229,7 +229,7 @@ univ.gammas.slice.sampling2 = function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gamm
 # @param upper upper bound on support of the distribution
 # @return One sample update using slice sampling
 
-lambda.slice.sampling2 = function(Y, Y0, eXB, alpha, C, lambda, w, m, lower = 0.01, upper = +Inf){
+lambda.slice.sampling2 <- function(Y, Y0, eXB, alpha, C, lambda, w, m, lower = 0.01, upper = +Inf){
 
   l0 = lambda
   l.post0 = lambda.post2(Y, Y0, eXB, alpha, C, l0)
@@ -307,7 +307,7 @@ lambda.slice.sampling2 = function(Y, Y0, eXB, alpha, C, lambda, w, m, lower = 0.
 # @param form type of parametric model (Exponential or Weibull)
 # @return log- posterior density of betas
 
-betas.post2 = function(betas.p, p, Sigma.b, Y, Y0,  X, betas, alpha, C, lambda, form){
+betas.post2 <- function(betas.p, p, Sigma.b, Y, Y0,  X, betas, alpha, C, lambda, form){
 
   betas[p] = betas.p
   if (form %in% "Weibull") {
@@ -337,7 +337,7 @@ betas.post2 = function(betas.p, p, Sigma.b, Y, Y0,  X, betas, alpha, C, lambda, 
 # @return log- posterior density of betas
 
 
-gammas.post2 = function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, form){
+gammas.post2 <- function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, form){
 
   gammas[p] = gammas.p
   if (form %in% "Weibull") {
@@ -364,7 +364,7 @@ gammas.post2 = function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, 
 # @return log- posterior density of betas
 
 
-lambda.post2 = function(Y, Y0, eXB, alpha, C, lambda, a = 1, b = 1){
+lambda.post2 <- function(Y, Y0, eXB, alpha, C, lambda, a = 1, b = 1){
 
   lprior = dgamma(lambda, a, b, log = TRUE)
   lpost = llikWeibull2(Y, Y0, eXB, alpha, C, lambda) + lprior
@@ -471,8 +471,8 @@ bayes.mfsurv.est <- function(Y, Y0,  C, X, Z, N, burn, thin, w, m, form, na.acti
   X <- as.matrix(X)
   Z <- as.matrix(Z)
 
-  return(list(Y=Y, Y0=Y0, C=C, X=X, Z=Z, betas=betas, gammas=gammas, lambda=lambda, post = post, iterations= N, burn_in=burn,
-              thinning=thin, betan=nrow(betas), gamman=nrow(gammas), distribution=form))
+  return(list(Y = Y, Y0 = Y0, C = C, X = X, Z = Z, betas = betas, gammas = gammas, lambda = lambda, post = post, iterations = N, burn_in = burn,
+              thinning = thin, betan = nrow(betas), gamman = nrow(gammas), distribution = form))
 
 }
 

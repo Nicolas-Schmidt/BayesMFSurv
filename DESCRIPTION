@@ -2,8 +2,20 @@ Package: BayesMFSurv
 Type: Package
 Title: Bayesian Misclassified-Failure Survival Model
 Version: 0.1.0
-Author: Minnie M. Joo, Sergio Bejar, Nicolas Schmidt, Bumba Mukherjee
-Maintainer: Nicolas Schmidt <nschmidt@cienciassociales.edu.uy>
+Authors@R: c(person(given = "Minnie M.",
+                    family = "Joo",
+                    role = c("aut")),
+             person(given = "Sergio",
+                    family = "Bejar",
+                    role = c("aut")),
+             person(given = "Nicolas", 
+                    family = "Schmidt", 
+                    role = c("aut", "cre"), 
+                    email = "nschmidt@cienciassociales.edu.uy"),  
+	         person(given = "Bumba", 
+                    family = "Mukherjee", 
+                    role = c("aut"))
+                    )
 Description: Contains functions to fit Bayesian Misclassified-Failure Survival 
   Model introduced in Bagozzi et al. (2019) <doi:10.1017/pan.2019.6>.
 License: MIT + file LICENSE

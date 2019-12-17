@@ -32,7 +32,7 @@
 #' @export
 
 mfsurv <-function(formula, Y0, data = list(), N, burn, thin, w = c(1,1,1), m = 10,
-                  form= c("Weibull", "Exponential"), na.action=c("na.omit","na.fail")){
+                  form = c("Weibull", "Exponential"), na.action=c("na.omit","na.fail")){
 
   if (missing(na.action)){na.action <- "na.omit"}
   if (missing(Y0))warning("Y0: elapsed time since inception missing")
@@ -43,8 +43,8 @@ mfsurv <-function(formula, Y0, data = list(), N, burn, thin, w = c(1,1,1), m = 1
   #if (missing(m)){m <- 10}
 
   equations<-as.character(formula)
-  formula1 <- paste(strsplit(equations[2], "|", fixed=T)[[1]][1],sep="")
-  formula2 <- paste(strsplit(equations[2], "|", fixed=T)[[1]][2],equations[1],equations[3],sep="")
+  formula1 <- paste(strsplit(equations[2], "|", fixed = TRUE)[[1]][1],sep="")
+  formula2 <- paste(strsplit(equations[2], "|", fixed = TRUE)[[1]][2],equations[1],equations[3],sep="")
   mf1 <- model.frame(formula=as.formula(formula1), data=data, na.action = na.pass)
   mf2 <- model.frame(formula=as.formula(formula2), data=data, na.action = na.pass)
   X <- model.matrix(attr(mf1, "terms"), data=mf1)
