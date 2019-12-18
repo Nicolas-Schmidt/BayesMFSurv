@@ -1,6 +1,12 @@
 ## resubmission
 
-Fixed dependency conflict with 'RcppArmadillo'.
+- Fixed dependency conflict with 'RcppArmadillo'.
+- Package description was better developed.
+- Database was added to run examples.
+- Full license file added.
+- Authors@R is now used.
+- The T and F were changed to TRUE and FALSE
+- Documentacoin was added about the return of each function.
 
 ## Test environments
 * local Windows, R 3.6.1

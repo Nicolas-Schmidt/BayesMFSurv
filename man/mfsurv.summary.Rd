@@ -11,18 +11,29 @@ mfsurv.summary(object, parameter = c("betas", "gammas", "lambda"))
 
 \item{parameter}{one of three parameters of the mfsurv output. Indicate either "betas", "gammas" or "lambda".}
 }
+\value{
+list. Empirical mean, standard deviation and quantiles for each variable.
+}
 \description{
 Returns a summary of a mfsurv object via \code{\link[coda]{summary.mcmc}}.
 }
 \examples{
-\dontrun{
-model1 <- mfsurv(Y ~ X1 + X2 | C ~ Z1 + Z2, Y0 = Y0, N = 1000, burn = 50, thin = 5,
-                 w = c(0.1, .1, .1), m = 10, data = data, form = "Weibull",
-                 a.action = 'na.omit')
+bgl <- Buhaugetal_2009_JCR
+bgl <- subset(bgl, coupx == 0)
+bgl <- na.omit(bgl)
+Y   <- bgl$Y
+X   <- as.matrix(cbind(1, bgl[,1:7]))
+C   <- bgl$C
+Z1  <- cbind(rep(1,nrow(bgl)))
+Y0  <- bgl$Y0
+model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
+                N = 50,
+                burn = 20,
+                thin = 15,
+                w = c(0.1, .1, .1),
+                m = 5,
+                form = "Weibull",
+                na.action = 'na.omit')
 
 mfsurv.summary(model1, "betas")
-}
-}
-\seealso{
-\code{\link{mcmc}}, \code{\link{summary.mcmc}}
 }

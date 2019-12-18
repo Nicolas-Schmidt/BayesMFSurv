@@ -9,6 +9,9 @@ mfsurv.stats(object)
 \arguments{
 \item{object}{an object of class \code{mfsurv}, the output of \code{mfsurv()}.}
 }
+\value{
+list.
+}
 \description{
 A function to calculate the deviance information criterion (DIC) for fitted model objects of class \code{mfsurv}
 for which a log-likelihood can be obtained, according to the formula \emph{DIC = -2 * (L - P)},
@@ -16,12 +19,22 @@ where \emph{L} is the log likelihood of the data given the posterior means of th
 \emph{P} is the  estimate of the effective number of parameters in the model.
 }
 \examples{
-\dontrun{
-model1 <- mfsurv(Y ~ X1 + X2 | C ~ Z1 + Z2, Y0 = Y0, N = 1000, burn = 50, thin = 5,
-                 w = c(0.1, .1, .1), m = 10, data = data, form = "Weibull",
-                 na.action = 'na.omit')
+bgl <- Buhaugetal_2009_JCR
+bgl <- subset(bgl, coupx == 0)
+bgl <- na.omit(bgl)
+Y   <- bgl$Y
+X   <- as.matrix(cbind(1, bgl[,1:7]))
+C   <- bgl$C
+Z1  <- cbind(rep(1,nrow(bgl)))
+Y0  <- bgl$Y0
+model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
+                N = 50,
+                burn = 20,
+                thin = 15,
+                w = c(0.1, .1, .1),
+                m = 5,
+                form = "Weibull",
+                na.action = 'na.omit')
 
 mfsurv.stats(model1)
-}
-
 }
