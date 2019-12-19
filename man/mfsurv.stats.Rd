@@ -19,13 +19,14 @@ where \emph{L} is the log likelihood of the data given the posterior means of th
 \emph{P} is the  estimate of the effective number of parameters in the model.
 }
 \examples{
+set.seed(95)
 bgl <- Buhaugetal_2009_JCR
 bgl <- subset(bgl, coupx == 0)
 bgl <- na.omit(bgl)
 Y   <- bgl$Y
 X   <- as.matrix(cbind(1, bgl[,1:7]))
 C   <- bgl$C
-Z1  <- cbind(rep(1,nrow(bgl)))
+Z1  <- matrix(1, nrow = nrow(bgl))
 Y0  <- bgl$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
                 N = 50,

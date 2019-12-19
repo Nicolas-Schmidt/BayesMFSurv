@@ -32,25 +32,26 @@
 #' \item{X}{matrix X's variables.}
 #' \item{Z}{the vector of `Z'.}
 #' \item{betas}{data.frame,  X.intercept and X variables.}
-#' \item{gammas}{data.frame, Z.intercept and Z variables}
+#' \item{gammas}{data.frame, Z.intercept and Z variables.}
 #' \item{lambda}{integer.}
 #' \item{post}{integer.}
 #' \item{iterations}{number of MCMC iterations.}
 #' \item{burn_in}{burn-ins to be discarded.}
 #' \item{thinning}{integer.}
 #' \item{betan}{integer, length of posterior sample for betas.}
-#' \item{gamman}{integer, length of posterior sample for gammas}
+#' \item{gamman}{integer, length of posterior sample for gammas.}
 #' \item{distribution}{character, type of distribution.}
-#' \item{call}{the call,}
+#' \item{call}{the call.}
 #' \item{formula}{description for the model to be estimated.}
 #' @examples
+#' set.seed(95)
 #' bgl <- Buhaugetal_2009_JCR
 #' bgl <- subset(bgl, coupx == 0)
 #' bgl <- na.omit(bgl)
 #' Y   <- bgl$Y
 #' X   <- as.matrix(cbind(1, bgl[,1:7]))
 #' C   <- bgl$C
-#' Z1  <- cbind(rep(1,nrow(bgl)))
+#' Z1  <- matrix(1, nrow = nrow(bgl))
 #' Y0  <- bgl$Y0
 #' model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
 #'                 N = 50,
@@ -148,13 +149,14 @@ mfsurv <-function(formula, Y0, data = list(), N, burn, thin, w = c(1,1,1), m = 1
 #' @param object an object of class \code{mfsurv}, the output of \code{mfsurv()}.
 #' @return list.
 #' @examples
+#' set.seed(95)
 #' bgl <- Buhaugetal_2009_JCR
 #' bgl <- subset(bgl, coupx == 0)
 #' bgl <- na.omit(bgl)
 #' Y   <- bgl$Y
 #' X   <- as.matrix(cbind(1, bgl[,1:7]))
 #' C   <- bgl$C
-#' Z1  <- cbind(rep(1,nrow(bgl)))
+#' Z1  <- matrix(1, nrow = nrow(bgl))
 #' Y0  <- bgl$Y0
 #' model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
 #'                 N = 50,
@@ -215,13 +217,14 @@ mfsurv.stats = function(object){
 #' @param parameter one of three parameters of the mfsurv output. Indicate either "betas", "gammas" or "lambda".
 #' @return list. Empirical mean, standard deviation and quantiles for each variable.
 #' @examples
+#' set.seed(95)
 #' bgl <- Buhaugetal_2009_JCR
 #' bgl <- subset(bgl, coupx == 0)
 #' bgl <- na.omit(bgl)
 #' Y   <- bgl$Y
 #' X   <- as.matrix(cbind(1, bgl[,1:7]))
 #' C   <- bgl$C
-#' Z1  <- cbind(rep(1,nrow(bgl)))
+#' Z1  <- matrix(1, nrow = nrow(bgl))
 #' Y0  <- bgl$Y0
 #' model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
 #'                 N = 50,
