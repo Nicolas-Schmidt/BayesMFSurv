@@ -18,7 +18,7 @@
 betas.slice.sampling2 <- function(Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, form){
 
   p1 = length(betas)
-  for (p in sample(1:p1, p1, replace = FALSE)) {
+  for (p in sample(1:p1, p1, replace = FALSE)){
     betas[p] = univ.betas.slice.sampling2(betas[p], p, Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, form = form)
   }
   return(betas)
