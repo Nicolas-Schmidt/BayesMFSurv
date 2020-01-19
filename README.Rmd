@@ -1,0 +1,98 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+## The `BayesMFSurv` package
+
+_Minnie M. Joo, Sergio Bejar, Nicolas Schmidt, Bumba Mukherjee_
+
+<!-- badges: start -->
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
+[![CRAN RStudio mirrordownloads](https://cranlogs.r-pkg.org/badges/BayesMFSurv?color=brightgreen)](https://www.r-pkg.org/pkg/BayesMFSurv)
+<!-- badges: end -->
+
+
+### Description
+
+Contains a split population survival estimator that models the misclassification probability of failure versus right-censored events. The split population survival estimator is described in Bagozzi et al. (2019) <doi:10.1017/pan.2019.6>.
+
+### Installation
+
+```r
+# Install BayesMFSurv from CRAN
+install.packages("BayesMFSurv")
+
+# The development version from GitHub:
+if (!require("remotes")) install.packages("remotes")
+remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
+```
+
+## Functions
+
+
+| Function |Description |
+| ----------------- | -------------------------------------------------------------- | 
+|`mfsurv`|fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage and the hazard in the second stage.|
+|`mfsurv.stats`|A function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv|
+|`mfsurv.summary`|Returns a summary of a mfsurv object via `coda::summary.mcmc`|
+|`betas.post2`|log-posterior distribution of betas with pth element fixed as betas.p|
+|`betas.slice.sampling2`|slice sampling for betas|
+|`univ.betas.slice.sampling2`|univariate slice sampling for betas.p|
+|`gammas.post2`|log-posterior distribution of gammas with pth element fixed as gammas.p|
+|`gammas.slice.sampling2`|slice sampling for gammas|
+|`univ.gammas.slice.sampling2`|univariate slice sampling for gammas.p|
+|`lambda.post2`|log-posterior distribution of lambda|
+|`lambda.slice.sampling2`|univariate slice sampling for lambda|
+
+
+### Example
+
+```{r example}
+library(BayesMFSurv)
+
+set.seed(95)
+bgl <- Buhaugetal_2009_JCR
+bgl <- subset(bgl, coupx == 0)
+bgl <- na.omit(bgl)
+Y   <- bgl$Y
+X   <- as.matrix(cbind(1, bgl[,1:7]))
+C   <- bgl$C
+Z1  <- matrix(1, nrow = nrow(bgl))
+Y0  <- bgl$Y0
+model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
+                 N = 150,
+                 burn = 50,
+                 thin = 30,
+                 w = c(0.1, .1, .1),
+                 m = 10,
+                 form = "Weibull",
+                 na.action = 'na.omit')
+
+
+mfsurv.summary(model1)
+
+
+```
+
+
+#### Citation
+
+To cite package`BayesMFSurv` in publications, please use:
+
+```r
+citation(package = 'BayesMFSurv')
+```
+
+
+

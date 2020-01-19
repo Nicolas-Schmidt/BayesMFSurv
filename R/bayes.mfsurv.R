@@ -211,7 +211,7 @@ mfsurv.stats = function(object){
 
 
 
-#' @title mfsurv.summary()
+#' @title mfsurv.summary
 #' @description Returns a summary of a mfsurv object via \code{\link[coda]{summary.mcmc}}.
 #' @param object an object of class \code{mfsurv}, the output of \code{\link{mfsurv}}.
 #' @param parameter one of three parameters of the mfsurv output. Indicate either "betas", "gammas" or "lambda".

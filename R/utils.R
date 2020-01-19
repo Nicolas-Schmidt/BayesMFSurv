@@ -529,22 +529,22 @@ bayes.mfsurv.default<-function(Y, Y0, C, X, Z, N, burn, thin, w, m, form, na.act
 
 llFun <- function(est,Y,Y0,C,X,Z,data){		#Note the extra variable Y0 passed to the time varying MF Weibull
 
-  n <- nrow(data)
-  llik <- matrix(0, nrow = n, ncol = 1)
+  n     <- nrow(data)
+  llik  <- matrix(0, nrow = n, ncol = 1)
   gamma <- est[1:ncol(Z)]
-  beta <- est[(ncol(Z)+1):(length(est)-1)]
-  p <- est[length(est)]
-  p <- exp(p)
-  XB <- X%*%beta
-  ZG <- Z%*%gamma
-  phi <- 1/(1+exp(-(ZG/p)))
-  llik <- C*(log((1-phi)+phi*exp(XB/p)*p*((exp(XB/p)*Y)^(p-1))*exp(-(exp(XB/p)*Y)^p))/exp(-(exp(XB/p)*Y0)^p))+(1-C)*(log(phi)+-(exp(XB/p)*Y)^p--(exp(XB/p)*Y0)^p)
-  one <- nrow(llik)
-  llik <- subset(llik, is.finite(llik))
-  two <- nrow(llik)
-  llik <- subset(llik, llik[,1] > -1000)
+  beta  <- est[(ncol(Z)+1):(length(est)-1)]
+  p     <- est[length(est)]
+  p     <- exp(p)
+  XB    <- X %*% beta
+  ZG    <- Z %*% gamma
+  phi   <- 1/(1+exp(-(ZG/p)))
+  llik  <- C*(log((1-phi)+phi*exp(XB/p)*p*((exp(XB/p)*Y)^(p-1))*exp(-(exp(XB/p)*Y)^p))/exp(-(exp(XB/p)*Y0)^p))+(1-C)*(log(phi)+-(exp(XB/p)*Y)^p--(exp(XB/p)*Y0)^p)
+  one   <- nrow(llik)
+  llik  <- subset(llik, is.finite(llik))
+  two   <- nrow(llik)
+  llik  <- subset(llik, llik[,1] > -1000)
   three <- nrow(llik)
-  llik <- -1*sum(llik)
+  llik  <- -1*sum(llik)
   list(llik = llik, one = one, two = two, three = three)
 
 }
