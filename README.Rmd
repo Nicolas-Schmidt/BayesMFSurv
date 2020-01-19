@@ -80,7 +80,7 @@ model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
                  na.action = 'na.omit')
 
 
-mfsurv.summary(model1)
+mfsurv.summary(model1, parameter = c("betas"))
 
 
 ```

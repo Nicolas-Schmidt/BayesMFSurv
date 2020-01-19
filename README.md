@@ -71,9 +71,7 @@ model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
                  na.action = 'na.omit')
 
 
-mfsurv.summary(model1)
-#> Warning in if (parameter == "betas") {: la condición tiene longitud > 1 y sólo
-#> el primer elemento será usado
+mfsurv.summary(model1, parameter = c("betas"))
 #> 
 #> Iterations = 1:3
 #> Thinning interval = 1 
