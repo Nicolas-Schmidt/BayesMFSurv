@@ -22,11 +22,16 @@ al. (2019) <doi:10.1017/pan.2019.6>.
 
 ### Installation
 
-``` r
-# Install BayesMFSurv from CRAN
-install.packages("BayesMFSurv")
+You can install the released version (`0.1.0`) of `BayesMFSurv` from
+[CRAN](https://cran.r-project.org/) with:
 
-# The development version from GitHub:
+``` r
+install.packages("BayesMFSurv")
+```
+
+And the development version (`0.2.0`) from GitHub with:
+
+``` r
 if (!require("remotes")) install.packages("remotes")
 remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 ```

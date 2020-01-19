@@ -2,7 +2,7 @@
 % Please edit documentation in R/bayes.mfsurv.R
 \name{mfsurv.summary}
 \alias{mfsurv.summary}
-\title{mfsurv.summary()}
+\title{mfsurv.summary}
 \usage{
 mfsurv.summary(object, parameter = c("betas", "gammas", "lambda"))
 }

@@ -1,7 +1,7 @@
 Package: BayesMFSurv
 Type: Package
 Title: Bayesian Misclassified-Failure Survival Model
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(person(given = "Minnie M.",
                     family = "Joo",
                     role = c("aut")),
@@ -31,7 +31,7 @@ Imports:
 	stats,
 	Rcpp (>= 1.0.3),
 	coda, 
-	mvtnorm,
+	mvtnorm
 LinkingTo: 
     Rcpp, 
     RcppArmadillo
