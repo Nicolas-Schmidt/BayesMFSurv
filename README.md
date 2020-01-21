@@ -53,14 +53,14 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | `lambda.post2`                | log-posterior distribution of lambda                                                                                                                             |
 | `lambda.slice.sampling2`      | univariate slice sampling for lambda                                                                                                                             |
 
-### Example(s)
+### Example
 
-|Dataset| The data used to estimate the examples that follow comes from
-Reenock, Bernhard and Sobek (2007) -DOI:
-10.111/j.1468-2478.2007.00469.x-. The RBS (2007) dataset uses
-continuous-time event history techniques to code episodes of democratic
-breakdown in all democracies from 1961 to 1995. In addition, it provides
-data on a number of economic and political variables.
+The data used to estimate the examples that follow comes from Reenock,
+Bernhard and Sobek (2007) -DOI: 10.111/j.1468-2478.2007.00469.x-. The
+RBS (2007) dataset uses continuous-time event history techniques to code
+episodes of democratic breakdown in all democracies from 1961 to 1995.
+In addition, it provides data on a number of economic and political
+variables.
 
 | Variable     | Description                                |
 | ------------ | ------------------------------------------ |
@@ -74,8 +74,6 @@ data on a number of economic and political variables.
 | **ethn**     | ethnic fractionalization                   |
 | **prevdem**  | \# of previous democratic episodes         |
 | **openc**    | trade openness                             |
-
-### Example
 
 ``` r
 library(BayesMFSurv)
