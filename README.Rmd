@@ -50,6 +50,7 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 |`mfsurv`|fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage and the hazard in the second stage.|
 |`mfsurv.stats`|A function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv|
 |`mfsurv.summary`|Returns a summary of a mfsurv object via `coda::summary.mcmc`|
+|`mcmcsurv` | estimates a Bayesian Exponential or Weibull model via Markov Chain Monte Carlo (MCMC)
 |`betas.post2`|log-posterior distribution of betas with pth element fixed as betas.p|
 |`betas.slice.sampling2`|slice sampling for betas|
 |`univ.betas.slice.sampling2`|univariate slice sampling for betas.p|
@@ -60,35 +61,64 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 |`lambda.slice.sampling2`|univariate slice sampling for lambda|
 
 
+
+
+
+### Example(s)
+
+|Dataset|
+The data used to estimate the examples that follow comes from Reenock, Bernhard and Sobek (2007) -DOI: 10.111/j.1468-2478.2007.00469.x-.  The RBS (2007) dataset uses continuous-time event history techniques to code episodes of democratic breakdown in all democracies from 1961 to 1995.  In addition, it provides data on a number of economic and political variables. 
+
+|Variable| Description|
+| ----------------- | -------------------------------------------------------------- | 
+|__calinv__|inverse of caloric intake|
+|__lnlevel__|gross domestic product per capita (logged)|
+|__calileve__|interaction calinv*lnlevel|
+|__necon__|economic growth|
+|__presi__|presidential regime|
+|__tag__|effective number of parties|
+|__rel__|religious fractionalization|
+|__ethn__|ethnic fractionalization|
+|__prevdem__|# of previous democratic episodes|
+|__openc__|trade openness|
+
 ### Example
 
-```{r example}
+```{r example, eval = FALSE}
+library(BayesMFSurv)
+
+# Baseline Bayesian misclassified failure (MF) model. 
+# Misclassification stage only includes the intercept while the survival stage 
+# includes all covariates described above.  
+
 library(BayesMFSurv)
 
 set.seed(95)
-bgl <- Buhaugetal_2009_JCR
-bgl <- subset(bgl, coupx == 0)
-bgl <- na.omit(bgl)
-Y   <- bgl$Y
-X   <- as.matrix(cbind(1, bgl[,1:7]))
-C   <- bgl$C
-Z1  <- matrix(1, nrow = nrow(bgl))
-Y0  <- bgl$Y0
+rbs <- na.omit(rbs)
+Y   <- rbs$Y
+X   <- as.matrix(cbind(1, rbs[,1:10]))
+C   <- rbs$C
+Z1  <- cbind(rep(1,nrow(rbs)))
+Y0  <- rbs$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
-                 N = 150,
-                 burn = 50,
-                 thin = 30,
-                 w = c(0.1, .1, .1),
-                 m = 10,
+                 N = 100000,
+                 burn = 10000,
+                 thin = 100,
+                 w = c(0.5, .5, .5),
+                 m = 20,
                  form = "Weibull",
                  na.action = 'na.omit')
 
-
-mfsurv.summary(model1, parameter = c("betas"))
-
-
+```{r, echo = FALSE}
+library(BayesMFSurv)
+model1 <- rio::import(here::here("data-raw", "rbs.model1_betas.rds"))
 ```
 
+```{r}
+mfsurv.stats(model1)
+
+mfsurv.summary(model1, parameter = c("betas"))
+```
 
 #### Citation
 

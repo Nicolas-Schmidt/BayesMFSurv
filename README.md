@@ -43,6 +43,7 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | `mfsurv`                      | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage and the hazard in the second stage. |
 | `mfsurv.stats`                | A function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv                                                        |
 | `mfsurv.summary`              | Returns a summary of a mfsurv object via `coda::summary.mcmc`                                                                                                    |
+| `mcmcsurv`                    | estimates a Bayesian Exponential or Weibull model via Markov Chain Monte Carlo (MCMC)                                                                            |
 | `betas.post2`                 | log-posterior distribution of betas with pth element fixed as betas.p                                                                                            |
 | `betas.slice.sampling2`       | slice sampling for betas                                                                                                                                         |
 | `univ.betas.slice.sampling2`  | univariate slice sampling for betas.p                                                                                                                            |
@@ -52,63 +53,103 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | `lambda.post2`                | log-posterior distribution of lambda                                                                                                                             |
 | `lambda.slice.sampling2`      | univariate slice sampling for lambda                                                                                                                             |
 
+### Example(s)
+
+|Dataset| The data used to estimate the examples that follow comes from
+Reenock, Bernhard and Sobek (2007) -DOI:
+10.111/j.1468-2478.2007.00469.x-. The RBS (2007) dataset uses
+continuous-time event history techniques to code episodes of democratic
+breakdown in all democracies from 1961 to 1995. In addition, it provides
+data on a number of economic and political variables.
+
+| Variable     | Description                                |
+| ------------ | ------------------------------------------ |
+| **calinv**   | inverse of caloric intake                  |
+| **lnlevel**  | gross domestic product per capita (logged) |
+| **calileve** | interaction calinv\*lnlevel                |
+| **necon**    | economic growth                            |
+| **presi**    | presidential regime                        |
+| **tag**      | effective number of parties                |
+| **rel**      | religious fractionalization                |
+| **ethn**     | ethnic fractionalization                   |
+| **prevdem**  | \# of previous democratic episodes         |
+| **openc**    | trade openness                             |
+
 ### Example
 
 ``` r
 library(BayesMFSurv)
 
+# Baseline Bayesian misclassified failure (MF) model. 
+# Misclassification stage only includes the intercept while the survival stage 
+# includes all covariates described above.  
+
+library(BayesMFSurv)
+
 set.seed(95)
-bgl <- Buhaugetal_2009_JCR
-bgl <- subset(bgl, coupx == 0)
-bgl <- na.omit(bgl)
-Y   <- bgl$Y
-X   <- as.matrix(cbind(1, bgl[,1:7]))
-C   <- bgl$C
-Z1  <- matrix(1, nrow = nrow(bgl))
-Y0  <- bgl$Y0
+rbs <- na.omit(rbs)
+Y   <- rbs$Y
+X   <- as.matrix(cbind(1, rbs[,1:10]))
+C   <- rbs$C
+Z1  <- cbind(rep(1,nrow(rbs)))
+Y0  <- rbs$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
-                 N = 150,
-                 burn = 50,
-                 thin = 30,
-                 w = c(0.1, .1, .1),
-                 m = 10,
+                 N = 100000,
+                 burn = 10000,
+                 thin = 100,
+                 w = c(0.5, .5, .5),
+                 m = 20,
                  form = "Weibull",
                  na.action = 'na.omit')
+```
 
+``` r
+mfsurv.stats(model1)
+#> $DIC
+#> [1] -91438.64
+#> 
+#> $Loglik
+#> [1] 1243.269
 
 mfsurv.summary(model1, parameter = c("betas"))
 #> 
-#> Iterations = 1:3
+#> Iterations = 1:900
 #> Thinning interval = 1 
 #> Number of chains = 1 
-#> Sample size per chain = 3 
+#> Sample size per chain = 900 
 #> 
 #> 1. Empirical mean and standard deviation for each variable,
 #>    plus standard error of the mean:
 #> 
-#>                  Mean     SD Naive SE Time-series SE
-#> X.intercept    1.3526 0.5162   0.2980         0.2980
-#> X1             4.5132 1.9285   1.1134         1.1134
-#> Xlndistx      -1.4516 0.7722   0.4458         0.4458
-#> Xconfbord    -10.0149 2.2335   1.2895         1.2895
-#> Xborddist     -1.1794 3.4491   1.9913         1.9913
-#> Xfigcapdum     1.7497 1.0601   0.6121         0.6121
-#> Xlgdp_onset   -5.8896 0.3726   0.2151         0.2151
-#> Xsip2l_onset  -4.4748 0.8591   0.4960         0.4960
-#> Xpcw           0.8724 1.4270   0.8239         0.8239
+#>                 Mean     SD Naive SE Time-series SE
+#> X.intercept  1.59992 2.5488  0.08496        0.11147
+#> X1           1.56001 1.6683  0.05561        0.08020
+#> Xcalinv      0.16505 2.5411  0.08470        0.19144
+#> Xlnlevel    -1.12098 1.4762  0.04921        0.09873
+#> Xcalileve   -0.03761 2.4731  0.08244        0.15828
+#> Xnecon      -2.13090 2.4107  0.08036        0.07463
+#> Xpresi       0.23041 1.9100  0.06367        0.05790
+#> Xtag        -0.01230 0.7878  0.02626        0.03822
+#> Xrel         1.45198 1.7404  0.05801        0.04774
+#> Xethn        1.01890 1.3000  0.04333        0.03564
+#> Xprevdem     0.13070 1.2525  0.04175        0.11232
+#> Xopenc      -0.19741 1.7926  0.05975        0.18939
 #> 
 #> 2. Quantiles for each variable:
 #> 
-#>                  2.5%      25%     50%     75%   97.5%
-#> X.intercept    0.9706   1.0602   1.160  1.5485  1.8985
-#> X1             3.2518   3.4041   3.573  5.1524  6.5736
-#> Xlndistx      -2.2769  -1.6799  -1.017 -1.0058 -0.9961
-#> Xconfbord    -11.3148 -11.3044 -11.293 -9.3643 -7.6287
-#> Xborddist     -4.4765  -2.8915  -1.130  0.5573  2.0762
-#> Xfigcapdum     1.0414   1.1410   1.252  2.1094  2.8814
-#> Xlgdp_onset   -6.2076  -6.0913  -5.962 -5.7241 -5.5098
-#> Xsip2l_onset  -5.0866  -4.9646  -4.829 -4.1622 -3.5619
-#> Xpcw          -0.5952   0.2549   1.199  1.6535  2.0621
+#>                 2.5%      25%      50%     75%     97.5%
+#> X.intercept -1.13533  0.69903  1.52827  2.5172  4.865523
+#> X1          -1.40643  0.62558  1.55816  2.4422  4.804547
+#> Xcalinv     -3.85120 -1.13823  0.00846  1.2496  4.676094
+#> Xlnlevel    -1.42372 -1.12625 -1.01540 -0.8972 -0.676814
+#> Xcalileve   -3.85666 -1.07941  0.04700  1.2389  4.015589
+#> Xnecon      -6.11097 -3.09541 -2.00216 -0.9263  1.233515
+#> Xpresi      -0.38909  0.05153  0.26004  0.4705  0.945025
+#> Xtag        -0.25624 -0.06322  0.03359  0.1123  0.255185
+#> Xrel         0.07307  0.93358  1.38643  1.8464  2.834912
+#> Xethn       -0.32831  0.54553  0.99991  1.4344  2.498845
+#> Xprevdem    -0.66111 -0.15803  0.05060  0.2317  0.689183
+#> Xopenc      -0.03202 -0.01575 -0.01156 -0.0081 -0.001084
 ```
 
 #### Citation
