@@ -9,3 +9,7 @@ llikWeibull2 <- function(Y, Y0, eXB, alpha, C, lambda) {
     .Call('_BayesMFSurv_llikWeibull2', PACKAGE = 'BayesMFSurv', Y, Y0, eXB, alpha, C, lambda)
 }
 
+llikWeibul2 <- function(Y, Y0, eXB, delta, C, rho) {
+    .Call('_BayesMFSurv_llikWeibul2', PACKAGE = 'BayesMFSurv', Y, Y0, eXB, delta, C, rho)
+}
+
