@@ -43,7 +43,6 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | `mfsurv`                      | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage and the hazard in the second stage. |
 | `mfsurv.stats`                | A function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv                                                        |
 | `mfsurv.summary`              | Returns a summary of a mfsurv object via `coda::summary.mcmc`                                                                                                    |
-| `mcmcsurv`                    | estimates a Bayesian Exponential or Weibull model via Markov Chain Monte Carlo (MCMC)                                                                            |
 | `betas.post2`                 | log-posterior distribution of betas with pth element fixed as betas.p                                                                                            |
 | `betas.slice.sampling2`       | slice sampling for betas                                                                                                                                         |
 | `univ.betas.slice.sampling2`  | univariate slice sampling for betas.p                                                                                                                            |
@@ -52,6 +51,7 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | `univ.gammas.slice.sampling2` | univariate slice sampling for gammas.p                                                                                                                           |
 | `lambda.post2`                | log-posterior distribution of lambda                                                                                                                             |
 | `lambda.slice.sampling2`      | univariate slice sampling for lambda                                                                                                                             |
+| `mcmcsurv`                    | estimates a Bayesian Exponential or Weibull model via Markov Chain Monte Carlo (MCMC)                                                                            |
 
 ### Example
 
@@ -75,6 +75,8 @@ variables.
 | **prevdem**  | \# of previous democratic episodes         |
 | **openc**    | trade openness                             |
 
+#### Misclassified-Failure
+
 ``` r
 library(BayesMFSurv)
 
@@ -85,12 +87,12 @@ library(BayesMFSurv)
 library(BayesMFSurv)
 
 set.seed(95)
-rbs <- na.omit(rbs)
-Y   <- rbs$Y
+RBS <- na.omit(RBS)
+Y   <- RBS$Y
 X   <- as.matrix(cbind(1, rbs[,1:10]))
 C   <- rbs$C
-Z1  <- cbind(rep(1,nrow(rbs)))
-Y0  <- rbs$Y0
+Z1  <- cbind(rep(1,nrow(RBS)))
+Y0  <- RBS$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
                  N = 100000,
                  burn = 10000,
@@ -149,6 +151,27 @@ mfsurv.summary(model1, parameter = c("betas"))
 #> Xprevdem    -0.66111 -0.15803  0.05060  0.2317  0.689183
 #> Xopenc      -0.03202 -0.01575 -0.01156 -0.0081 -0.001084
 ```
+
+#### Non Misclassified-Failure
+
+``` r
+model2 <- mcmcSurv(Y, Y0, C,  X, 
+                  N = 5000, 
+                  burn = 500, 
+                  thin = 5, 
+                  w = c(0.5, 0.5, 0.5),
+                  m = 10, 
+                  form = "Weibull")
+```
+
+``` r
+str(model2)
+#> List of 2
+#>  $ betas: num [1:900, 1:11] 3.22 3.04 2.85 3.07 3.12 ...
+#>  $ rho  : num [1:900] 1.032 0.948 1.384 1.322 1.467 ...
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" /><img src="man/figures/README-unnamed-chunk-7-2.png" width="100%" />
 
 #### Citation
 

@@ -50,7 +50,6 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 |`mfsurv`|fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage and the hazard in the second stage.|
 |`mfsurv.stats`|A function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv|
 |`mfsurv.summary`|Returns a summary of a mfsurv object via `coda::summary.mcmc`|
-|`mcmcsurv` | estimates a Bayesian Exponential or Weibull model via Markov Chain Monte Carlo (MCMC)
 |`betas.post2`|log-posterior distribution of betas with pth element fixed as betas.p|
 |`betas.slice.sampling2`|slice sampling for betas|
 |`univ.betas.slice.sampling2`|univariate slice sampling for betas.p|
@@ -59,7 +58,7 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 |`univ.gammas.slice.sampling2`|univariate slice sampling for gammas.p|
 |`lambda.post2`|log-posterior distribution of lambda|
 |`lambda.slice.sampling2`|univariate slice sampling for lambda|
-
+|`mcmcsurv` | estimates a Bayesian Exponential or Weibull model via Markov Chain Monte Carlo (MCMC)
 
 
 
@@ -83,7 +82,7 @@ The data used to estimate the examples that follow comes from Reenock, Bernhard 
 |__openc__|trade openness|
 
 
-
+#### Misclassified-Failure
 ```{r example, eval = FALSE}
 library(BayesMFSurv)
 
@@ -94,12 +93,12 @@ library(BayesMFSurv)
 library(BayesMFSurv)
 
 set.seed(95)
-rbs <- na.omit(rbs)
-Y   <- rbs$Y
+RBS <- na.omit(RBS)
+Y   <- RBS$Y
 X   <- as.matrix(cbind(1, rbs[,1:10]))
 C   <- rbs$C
-Z1  <- cbind(rep(1,nrow(rbs)))
-Y0  <- rbs$Y0
+Z1  <- cbind(rep(1,nrow(RBS)))
+Y0  <- RBS$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
                  N = 100000,
                  burn = 10000,
@@ -119,6 +118,39 @@ mfsurv.stats(model1)
 
 mfsurv.summary(model1, parameter = c("betas"))
 ```
+
+#### Non Misclassified-Failure
+```{r, eval = FALSE}
+model2 <- mcmcSurv(Y, Y0, C,  X, 
+                  N = 5000, 
+                  burn = 500, 
+                  thin = 5, 
+                  w = c(0.5, 0.5, 0.5),
+                  m = 10, 
+                  form = "Weibull")
+
+```
+
+```{r, echo = FALSE}
+model2 <- rio::import(here::here("data-raw", "nonmf.rds"))
+```
+```{r}
+str(model2)
+```
+
+
+```{r, echo = FALSE}
+par(mfrow = c(3,4))
+for(i in 1:ncol(model2$betas)){
+    plot(density(model2$betas[,i]), main = i, ylab = "")}
+par(mfrow = c(3,4))
+for(i in 1:ncol(model2$betas)){plot(model2$betas[,i], type = 'l', ylab = "", xlab = "", main = i)}
+```
+
+
+
+
+
 
 #### Citation
 

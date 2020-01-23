@@ -15,7 +15,7 @@ using namespace Rcpp;
 //     	           Likelihood function            //
 // **********************************************************//
 // [[Rcpp::export]]
-double llikWeibul2 (arma::vec Y,
+double llikWeibull3 (arma::vec Y,
                     arma::vec Y0,
                     arma::vec eXB,
                     arma::vec delta,

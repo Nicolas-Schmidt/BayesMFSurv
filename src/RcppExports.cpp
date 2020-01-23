@@ -37,9 +37,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// llikWeibul2
-double llikWeibul2(arma::vec Y, arma::vec Y0, arma::vec eXB, arma::vec delta, arma::vec C, double rho);
-RcppExport SEXP _BayesMFSurv_llikWeibul2(SEXP YSEXP, SEXP Y0SEXP, SEXP eXBSEXP, SEXP deltaSEXP, SEXP CSEXP, SEXP rhoSEXP) {
+// llikWeibull3
+double llikWeibull3(arma::vec Y, arma::vec Y0, arma::vec eXB, arma::vec delta, arma::vec C, double rho);
+RcppExport SEXP _BayesMFSurv_llikWeibull3(SEXP YSEXP, SEXP Y0SEXP, SEXP eXBSEXP, SEXP deltaSEXP, SEXP CSEXP, SEXP rhoSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -49,7 +49,7 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< arma::vec >::type delta(deltaSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type C(CSEXP);
     Rcpp::traits::input_parameter< double >::type rho(rhoSEXP);
-    rcpp_result_gen = Rcpp::wrap(llikWeibul2(Y, Y0, eXB, delta, C, rho));
+    rcpp_result_gen = Rcpp::wrap(llikWeibull3(Y, Y0, eXB, delta, C, rho));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -57,7 +57,7 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_BayesMFSurv_llikWeibull", (DL_FUNC) &_BayesMFSurv_llikWeibull, 5},
     {"_BayesMFSurv_llikWeibull2", (DL_FUNC) &_BayesMFSurv_llikWeibull2, 6},
-    {"_BayesMFSurv_llikWeibul2", (DL_FUNC) &_BayesMFSurv_llikWeibul2, 6},
+    {"_BayesMFSurv_llikWeibull3", (DL_FUNC) &_BayesMFSurv_llikWeibull3, 6},
     {NULL, NULL, 0}
 };
 

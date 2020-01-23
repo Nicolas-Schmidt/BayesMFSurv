@@ -1,0 +1,32 @@
+#' RBS
+#'
+#'The \href{http://bit.ly/2RnpnO0}{Reenock, Bernhard and Sobek (2007)}
+#'dataset uses continuous-time event history techniques to code
+#'episodes of democratic breakdown in all democracies from 1961 to 1995. In addition,
+#'it provides data on a number of economic and political variables.
+#'
+#'\describe{
+#'        \item{calinv}{inverse of caloric intake}
+#'        \item{lnlevel}{gross domestic product per capita (logged)}
+#'        \item{calileve}{interaction calinv*lnlevel}
+#'        \item{necon}{economic growth}
+#'        \item{presi}{presidential regime}
+#'        \item{tag}{effective number of parties}
+#'        \item{rel}{religious fractionalization}
+#'        \item{ethn}{ethnic fractionalization}
+#'        \item{prevdem}{previous democratic episodes}
+#'        \item{openc}{trade openness}
+#'        \item{Y}{description...}
+#'        \item{Y0}{description...}
+#'        \item{C}{description...}
+#'
+#' }
+#' @docType data
+#' @keywords datasets
+#' @name RBS
+#' @usage data(RBS)
+#' @format A data frame with 1794 rows and 13 variables
+#' @source Reenock, Christopher, Bernhard,Michael, Sobek, David (2007), Regressive Socioeconomic Distribution and Democratic Survival, International Studies Quarterly, Volume 51, Issue 3, September 2007, Pages 677–699
+"RBS"
+
+
