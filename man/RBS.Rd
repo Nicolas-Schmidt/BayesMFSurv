@@ -29,9 +29,9 @@ it provides data on a number of economic and political variables.
        \item{ethn}{ethnic fractionalization}
        \item{prevdem}{previous democratic episodes}
        \item{openc}{trade openness}
-       \item{Y}{description...}
-       \item{Y0}{description...}
-       \item{C}{description...}
+       \item{Y}{years in current democratic episode}
+       \item{Y0}{years in current democratic episode (lagged)}
+       \item{C}{breakdown of democratic episode}
 
 }
 }

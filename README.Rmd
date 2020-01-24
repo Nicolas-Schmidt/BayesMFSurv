@@ -137,6 +137,8 @@ model2 <- mcmcSurv(Y = Y, Y0 = Y0, C =  C,  X = X,
 ```{r, echo = FALSE}
 model2 <- rio::import(here::here("data-raw", "nonmf.rds"))
 ```
+
+
 ```{r}
 str(model2)
 ```
