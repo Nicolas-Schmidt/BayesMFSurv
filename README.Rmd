@@ -80,9 +80,9 @@ The data used to estimate the examples that follow comes from Reenock, Bernhard 
 |__ethn__|ethnic fractionalization|
 |__prevdem__|# of previous democratic episodes|
 |__openc__|trade openness|
-|__Y__|...|
-|__Y0__|...|
-|__C__|...|
+|__Y__|years in current democratic episode |
+|__Y0__|years in current democratic episode (lagged)|
+|__C__|breakdown of democratic episode|
 
 
 #### Misclassified-Failure
@@ -124,13 +124,13 @@ mfsurv.summary(model1, parameter = c("betas"))
 
 #### Non Misclassified-Failure
 ```{r, eval = FALSE}
-model2 <- mcmcSurv(Y, Y0, C,  X, 
-                  N = 5000, 
-                  burn = 500, 
-                  thin = 5, 
-                  w = c(0.5, 0.5, 0.5),
-                  m = 10, 
-                  form = "Weibull")
+model2 <- mcmcSurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
+                   N = 5000, 
+                   burn = 500, 
+                   thin = 5, 
+                   w = c(0.5, 0.5, 0.5),
+                   m = 10, 
+                   form = "Weibull")
 
 ```
 

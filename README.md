@@ -62,21 +62,21 @@ episodes of democratic breakdown in all democracies from 1961 to 1995.
 In addition, it provides data on a number of economic and political
 variables.
 
-| Variable     | Description                                |
-| ------------ | ------------------------------------------ |
-| **calinv**   | inverse of caloric intake                  |
-| **lnlevel**  | gross domestic product per capita (logged) |
-| **calileve** | interaction calinv\*lnlevel                |
-| **necon**    | economic growth                            |
-| **presi**    | presidential regime                        |
-| **tag**      | effective number of parties                |
-| **rel**      | religious fractionalization                |
-| **ethn**     | ethnic fractionalization                   |
-| **prevdem**  | \# of previous democratic episodes         |
-| **openc**    | trade openness                             |
-| **Y**        | …                                          |
-| **Y0**       | …                                          |
-| **C**        | …                                          |
+| Variable     | Description                                  |
+| ------------ | -------------------------------------------- |
+| **calinv**   | inverse of caloric intake                    |
+| **lnlevel**  | gross domestic product per capita (logged)   |
+| **calileve** | interaction calinv\*lnlevel                  |
+| **necon**    | economic growth                              |
+| **presi**    | presidential regime                          |
+| **tag**      | effective number of parties                  |
+| **rel**      | religious fractionalization                  |
+| **ethn**     | ethnic fractionalization                     |
+| **prevdem**  | \# of previous democratic episodes           |
+| **openc**    | trade openness                               |
+| **Y**        | years in current democratic episode          |
+| **Y0**       | years in current democratic episode (lagged) |
+| **C**        | breakdown of democratic episode              |
 
 #### Misclassified-Failure
 
@@ -158,13 +158,13 @@ mfsurv.summary(model1, parameter = c("betas"))
 #### Non Misclassified-Failure
 
 ``` r
-model2 <- mcmcSurv(Y, Y0, C,  X, 
-                  N = 5000, 
-                  burn = 500, 
-                  thin = 5, 
-                  w = c(0.5, 0.5, 0.5),
-                  m = 10, 
-                  form = "Weibull")
+model2 <- mcmcSurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
+                   N = 5000, 
+                   burn = 500, 
+                   thin = 5, 
+                   w = c(0.5, 0.5, 0.5),
+                   m = 10, 
+                   form = "Weibull")
 ```
 
 ``` r
