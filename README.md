@@ -74,6 +74,9 @@ variables.
 | **ethn**     | ethnic fractionalization                   |
 | **prevdem**  | \# of previous democratic episodes         |
 | **openc**    | trade openness                             |
+| **Y**        | …                                          |
+| **Y0**       | …                                          |
+| **C**        | …                                          |
 
 #### Misclassified-Failure
 
@@ -89,8 +92,8 @@ library(BayesMFSurv)
 set.seed(95)
 RBS <- na.omit(RBS)
 Y   <- RBS$Y
-X   <- as.matrix(cbind(1, rbs[,1:10]))
-C   <- rbs$C
+X   <- as.matrix(cbind(1, RBS[,1:10]))
+C   <- RBS$C
 Z1  <- cbind(rep(1,nrow(RBS)))
 Y0  <- RBS$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
