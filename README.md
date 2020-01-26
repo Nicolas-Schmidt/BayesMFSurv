@@ -40,7 +40,7 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 
 | Function                      | Description                                                                                                                                                      |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mfsurv`                      | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage and the hazard in the second stage. |
+| `mfsurv`                      | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. |
 | `mfsurv.stats`                | A function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv                                                        |
 | `mfsurv.summary`              | Returns a summary of a mfsurv object via `coda::summary.mcmc`                                                                                                    |
 | `betas.post2`                 | log-posterior distribution of betas with pth element fixed as betas.p                                                                                            |
