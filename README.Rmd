@@ -72,7 +72,7 @@ The data used to estimate the following examples come from Reenock, Bernhard and
 | ----------------- | -------------------------------------------------------------- | 
 |__calinv__|inverse of per capita daily caloric supply|
 |__lnlevel__|natural log of economic development|
-|__calileve__|inverse of per capita daily caloric supply*natural log of economic development|
+|__calileve__|inverse of per capita daily caloric supply*lnlevel|
 |__necon__|economic performance|
 |__presi__|presidential regime|
 |__tag__|effective number of parties|
