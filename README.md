@@ -41,8 +41,8 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | Function                      | Description                                                                                                                                                      |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `mfsurv`                      | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. |
-| `mfsurv.stats`                | A function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv                                                        |
-| `mfsurv.summary`              | Returns a summary of a mfsurv object via `coda::summary.mcmc`                                                                                                    |
+| `mfsurv.stats`                | a function to calculate the deviance information criterion (DIC) for fitted model objects of class mfsurv                                                        |
+| `mfsurv.summary`              | returns a summary of a mfsurv object via `coda::summary.mcmc`                                                                                                    |
 | `betas.post2`                 | log-posterior distribution of betas with pth element fixed as betas.p                                                                                            |
 | `betas.slice.sampling2`       | slice sampling for betas                                                                                                                                         |
 | `univ.betas.slice.sampling2`  | univariate slice sampling for betas.p                                                                                                                            |
@@ -51,11 +51,11 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | `univ.gammas.slice.sampling2` | univariate slice sampling for gammas.p                                                                                                                           |
 | `lambda.post2`                | log-posterior distribution of lambda                                                                                                                             |
 | `lambda.slice.sampling2`      | univariate slice sampling for lambda                                                                                                                             |
-| `mcmcsurv`                    | estimates a Bayesian Exponential or Weibull model via Markov Chain Monte Carlo (MCMC)                                                                            |
+| `mcmcsurv`                    | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC)                                                                   |
 
 ### Example
 
-The data used to estimate the examples that follow comes from Reenock,
+The data used to estimate the following examples come from Reenock,
 Bernhard and Sobek (2007) -DOI: 10.111/j.1468-2478.2007.00469.x-. The
 RBS (2007) dataset uses continuous-time event history techniques to code
 episodes of democratic breakdown in all democracies from 1961 to 1995.
@@ -64,15 +64,15 @@ variables.
 
 | Variable     | Description                                  |
 | ------------ | -------------------------------------------- |
-| **calinv**   | inverse of caloric intake                    |
-| **lnlevel**  | gross domestic product per capita (logged)   |
-| **calileve** | interaction calinv\*lnlevel                  |
-| **necon**    | economic growth                              |
+| **calinv**   | inverse of per capita daily caloric supply   |
+| **lnlevel**  | natural log of economic development          |
+| **calileve** | inverse of per capita daily caloric supply*lnlevel|
+| **necon**    | economic performance                         |
 | **presi**    | presidential regime                          |
 | **tag**      | effective number of parties                  |
 | **rel**      | religious fractionalization                  |
 | **ethn**     | ethnic fractionalization                     |
-| **prevdem**  | \# of previous democratic episodes           |
+| **prevdem**  | numbers of previous democratic episodes      |
 | **openc**    | trade openness                               |
 | **Y**        | years in current democratic episode          |
 | **Y0**       | years in current democratic episode (lagged) |
