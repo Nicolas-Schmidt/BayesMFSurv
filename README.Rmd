@@ -141,6 +141,7 @@ model2 <- rio::import(here::here("data-raw", "nonmf.rds"))
 
 ```{r}
 str(model2)
+mfsurv.summary(model2, parameter = c("betas"))
 ```
 
 
