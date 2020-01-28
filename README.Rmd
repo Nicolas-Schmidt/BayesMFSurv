@@ -137,7 +137,7 @@ Y0  <- RBS$Y0
 
 ```{r}
 model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
-                   N = 500, 
+                   N = 5000, 
                    burn = 50, 
                    thin = 5, 
                    w = c(0.5, 0.5, 0.5),
