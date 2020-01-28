@@ -1,4 +1,4 @@
-#' @title mcmcSurv
+#' @title mcmcsurv
 #' @description Markov Chain Monte Carlo (MCMC) to run Bayesian survival (Weibull) model
 #'
 #' @param Y response variable
@@ -15,7 +15,7 @@
 #' @return chain of the variables of interest
 #'
 #' @export
-mcmcSurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {
+mcmcsurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {
     p1 = dim(X)[2]
     # initial values
     betas = rep(0, p1)
@@ -40,5 +40,32 @@ mcmcSurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {
             rho.samp[(iter - burn) / thin] = rho
         }
     }
-    return(list(betas = betas.samp, rho = rho.samp))
+    out <- list(betas = betas.samp, rho = rho.samp, Y=Y, Y0=Y0, X=X, N=N, C=C, iterations = N, burn_in = burn,
+                thinning = thin, betan = nrow(betas), distribution = form)
+    class(out) <- "mcmcsurv"
+    return(out)
 }
+
+
+
+#' @title summary.mcmcsurv
+#' @description Returns a summary of a mfsurv object via \code{\link[coda]{summary.mcmc}}.
+#' @param object an object of class \code{mfsurv}, the output of \code{\link{mfsurv}}.
+#' @param parameter one of three parameters of the mfsurv output. Indicate either "betas" or "rho".
+#' @param ... additional parameter
+#' @return list. Empirical mean, standard deviation and quantiles for each variable.
+#' @rdname mcmcsurv
+#' @export
+
+summary.mcmcsurv <- function(object, parameter = c("betas", "rho"), ...){
+
+    if (parameter == "betas"){
+        sum <- summary(mcmc(object$betas))
+        return(sum)
+    }
+    if (parameter == "rho"){
+        sum <- summary(mcmc(object$lambda))
+        return(sum)
+    }
+}
+

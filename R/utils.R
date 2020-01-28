@@ -122,6 +122,70 @@ bayes.mfsurv.default<-function(Y, Y0, C, X, Z, N, burn, thin, w, m, form, na.act
 
 
 
+# @title llFun.mfsurv
+# @description A function to calculate the log-likelihood of the data for mfsurv.
+# @param est a matrix of posterior distribution sample such as posterior mean or the full chain of posteior samples.
+# @param Y a matrix the time (duration) dependent variable for the survival stage (t).
+# @param Y0 a matrix of the elapsed time since inception until the beginning of time period (t-1).
+# @param C a matrix of the censoring (or failure) dependent variable for the misclassification stage.
+# @param X a matrix of covariates for the survival stage.
+# @param Z a matrix of covariates for the misclassification stage.
+# @param data a data frame that contains the Y, Y0, C, X, and Z variables.
+
+
+llFun.mfsurv <- function(est,Y,Y0,C,X,Z,data){		#Note the extra variable Y0 passed to the time varying MF Weibull
+
+  n     <- nrow(data)
+  llik  <- matrix(0, nrow = n, ncol = 1)
+  gamma <- est[1:ncol(Z)]
+  beta  <- est[(ncol(Z)+1):(length(est)-1)]
+  p     <- est[length(est)]
+  p     <- exp(p)
+  XB    <- X %*% beta
+  ZG    <- Z %*% gamma
+  phi   <- 1/(1+exp(-(ZG)))
+  llik  <- C*(log((1-phi)+phi*exp(XB)*p*((exp(XB)*Y)^(p-1))*exp(-(exp(XB)*Y)^p))/exp(-(exp(XB)*Y0)^p))+(1-C)*(log(phi)+-(exp(XB)*Y)^p--(exp(XB)*Y0)^p)
+  one   <- nrow(llik)
+  llik  <- subset(llik, is.finite(llik))
+  two   <- nrow(llik)
+  llik  <- subset(llik, llik[,1] > -1000)
+  three <- nrow(llik)
+  llik  <- -1*sum(llik)
+  list(llik = llik, one = one, two = two, three = three)
+
+}
+
+# @title llFun.mcsurv
+# @description A function to calculate the log-likelihood of the data for mcmcsurv.
+# @param est a matrix of posterior distribution sample such as posterior mean or the full chain of posteior samples.
+# @param Y a matrix the time (duration) dependent variable for the survival stage (t).
+# @param Y0 a matrix of the elapsed time since inception until the beginning of time period (t-1).
+# @param C a matrix of the censoring (or failure) dependent variable for the misclassification stage.
+# @param X a matrix of covariates for the survival stage.
+# @param Z a matrix of covariates for the misclassification stage.
+# @param data a data frame that contains the Y, Y0, C, X, and Z variables.
+
+
+llFun.mcmcsurv <- function(est,Y,Y0,C,X,data){		#Note the extra variable Y0 passed to the time varying MF Weibull
+
+  n     <- nrow(data)
+  llik  <- matrix(0, nrow = n, ncol = 1)
+  beta  <- est[1:(length(est))] #est[1:(length(est)-1)] <--> non-conformable arguments --> X %*% beta
+  p     <- est[length(est)]
+  p     <- exp(p)
+  XB    <- X %*% beta
+  llik  <- C*(log(exp(XB)*p*((exp(XB)*Y)^(p-1))*exp(-(exp(XB)*Y)^p)))+(1-C)*log(exp(-(exp(XB)*Y)^p))
+  one   <- nrow(llik)
+  llik  <- subset(llik, is.finite(llik))
+  two   <- nrow(llik)
+  llik  <- subset(llik, llik[,1] > -1000)
+  three <- nrow(llik)
+  llik  <- -1*sum(llik)
+  list(llik = llik, one = one, two = two, three = three)
+
+}
+
+
 # @title llFun
 # @description A function to calculate the log-likelihood of the data.
 # @param est a matrix of posterior distribution sample such as posterior mean or the full chain of posteior samples.
@@ -154,8 +218,6 @@ llFun <- function(est,Y,Y0,C,X,Z,data){		#Note the extra variable Y0 passed to t
   list(llik = llik, one = one, two = two, three = three)
 
 }
-
-
 
 jointpost = function(Y, Y0, X, Z, betas, Sigma.b, gammas, Sigma.g, alpha, C, lambda, a = 1, b = 1, form){
 

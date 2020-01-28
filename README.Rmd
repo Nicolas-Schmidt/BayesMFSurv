@@ -87,7 +87,6 @@ The data used to estimate the following examples come from Reenock, Bernhard and
 
 #### Misclassified-Failure
 ```{r example, eval = FALSE}
-library(BayesMFSurv)
 
 # Baseline Bayesian misclassified failure (MF) model. 
 # Misclassification stage only includes the intercept while the survival stage 
@@ -117,16 +116,29 @@ model1 <- rio::import(here::here("data-raw", "rbs.model1_betas.rds"))
 ```
 
 ```{r}
-mfsurv.stats(model1)
+stats(model1)
 
-mfsurv.summary(model1, parameter = c("betas"))
+summary(model1, parameter = c("betas"))
 ```
 
 #### Non Misclassified-Failure
-```{r, eval = FALSE}
-model2 <- mcmcSurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
-                   N = 5000, 
-                   burn = 500, 
+
+
+```{r, echo = FALSE}
+set.seed(95)
+RBS <- na.omit(RBS)
+Y   <- RBS$Y
+X   <- as.matrix(cbind(1, RBS[,1:10]))
+C   <- RBS$C
+Z1  <- cbind(rep(1,nrow(RBS)))
+Y0  <- RBS$Y0
+```
+
+
+```{r}
+model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
+                   N = 500, 
+                   burn = 50, 
                    thin = 5, 
                    w = c(0.5, 0.5, 0.5),
                    m = 10, 
@@ -135,13 +147,14 @@ model2 <- mcmcSurv(Y = Y, Y0 = Y0, C =  C,  X = X,
 ```
 
 ```{r, echo = FALSE}
-model2 <- rio::import(here::here("data-raw", "nonmf.rds"))
+#model2 <- rio::import(here::here("data-raw", "nonmf.rds"))
 ```
 
 
 ```{r}
-str(model2)
-mfsurv.summary(model2, parameter = c("betas"))
+stats(model2)
+
+summary(model2, parameter = c("betas"))
 ```
 
 
