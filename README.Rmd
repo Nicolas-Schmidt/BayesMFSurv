@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## The `BayesMFSurv` package
 
-_Minnie M. Joo, Nicolas Schmidt, Sergio Bejar Bumba Mukherjee_
+_Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee_
 
 <!-- badges: start -->
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
@@ -95,9 +95,9 @@ C   <- RBS$C
 Z1  <- cbind(rep(1,nrow(RBS)))
 Y0  <- RBS$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
-                 N = 100000,
-                 burn = 10000,
-                 thin = 100,
+                 N = 15000,
+                 burn = 500,
+                 thin = 10,
                  w = c(0.5, .5, .5),
                  m = 20,
                  form = "Weibull",
@@ -105,7 +105,7 @@ model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
 
 ```{r, echo = FALSE}
 library(BayesMFSurv)
-model1 <- rio::import(here::here("data-raw", "rbs.model1_betas.rds"))
+model1 <- rio::import(here::here("data-raw", "model1_output.rds"))
 ```
 
 ```{r}
@@ -117,30 +117,21 @@ summary(model1, parameter = c("betas"))
 #### Non Misclassified-Failure
 
 
-```{r, echo = FALSE}
+
+```{r, eval = FALSE}
 set.seed(95)
-RBS <- na.omit(RBS)
-Y   <- RBS$Y
-X   <- as.matrix(cbind(1, RBS[,1:10]))
-C   <- RBS$C
-Z1  <- cbind(rep(1,nrow(RBS)))
-Y0  <- RBS$Y0
-```
-
-
-```{r}
 model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
-                   N = 500, 
-                   burn = 50, 
-                   thin = 5, 
+                   N = 15000, 
+                   burn = 500, 
+                   thin = 10, 
                    w = c(0.5, 0.5, 0.5),
-                   m = 10, 
+                   m = 20, 
                    form = "Weibull")
 
 ```
 
 ```{r, echo = FALSE}
-#model2 <- rio::import(here::here("data-raw", "nonmf.rds"))
+model2 <- rio::import(here::here("data-raw", "model2_output.rds"))
 ```
 
 
