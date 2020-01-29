@@ -18,7 +18,6 @@ bayes.mfsurv.est <- function(Y, Y0,  C, X, Z, N, burn, thin, w, m, form, na.acti
 
   # na.action
   na.action <- na.action
-
   p1 = dim(X)[2]
   p2 = dim(Z)[2]
 

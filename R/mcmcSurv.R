@@ -40,6 +40,8 @@ mcmcsurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {
             rho.samp[(iter - burn) / thin] = rho
         }
     }
+
+    colnames(betas.samp) <- paste0("X", colnames(X))#---------------------------
     out <- list(betas = betas.samp, rho = rho.samp, Y=Y, Y0=Y0, X=X, N=N, C=C, iterations = N, burn_in = burn,
                 thinning = thin, betan = nrow(betas), distribution = form)
     class(out) <- "mcmcsurv"

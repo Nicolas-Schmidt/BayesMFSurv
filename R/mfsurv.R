@@ -64,7 +64,7 @@
 #' @export
 
 mfsurv <-function(formula, Y0, data = list(), N, burn, thin, w = c(1,1,1), m = 10,
-                  form = c("Weibull", "Exponential"), na.action=c("na.omit","na.fail")){
+                  form = c("Weibull", "Exponential"), na.action = c("na.omit","na.fail")){
 
   if (missing(na.action)){na.action <- "na.omit"}
   if (missing(Y0))warning("Y0: elapsed time since inception missing")
