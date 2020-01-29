@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## The `BayesMFSurv` package
 
-_Minnie M. Joo, Sergio Bejar, Nicolas Schmidt, Bumba Mukherjee_
+_Minnie M. Joo, Nicolas Schmidt, Sergio Bejar Bumba Mukherjee_
 
 <!-- badges: start -->
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
@@ -48,17 +48,10 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 | Function |Description |
 | ----------------- | -------------------------------------------------------------- | 
 |`mfsurv`|fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage.|
+|`mcmcsurv` | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC)|
 |`stats`|a function to calculate the deviance information criterion (DIC) and the log-likelihood for fitted model objects of class mfsurv or mcmcsurv|
 |`summary`|returns a summary of a mfsurv or mcmcsurv object via `coda::summary.mcmc`|
-|`betas.post2`|log-posterior distribution of betas with pth element fixed as betas.p|
-|`betas.slice.sampling2`|slice sampling for betas|
-|`univ.betas.slice.sampling2`|univariate slice sampling for betas.p|
-|`gammas.post2`|log-posterior distribution of gammas with pth element fixed as gammas.p|
-|`gammas.slice.sampling2`|slice sampling for gammas|
-|`univ.gammas.slice.sampling2`|univariate slice sampling for gammas.p|
-|`lambda.post2`|log-posterior distribution of lambda|
-|`lambda.slice.sampling2`|univariate slice sampling for lambda|
-|`mcmcsurv` | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC)
+
 
 
 
@@ -137,7 +130,7 @@ Y0  <- RBS$Y0
 
 ```{r}
 model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
-                   N = 5000, 
+                   N = 500, 
                    burn = 50, 
                    thin = 5, 
                    w = c(0.5, 0.5, 0.5),

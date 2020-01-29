@@ -3,7 +3,7 @@
 
 ## The `BayesMFSurv` package
 
-*Minnie M. Joo, Sergio Bejar, Nicolas Schmidt, Bumba
+*Minnie M. Joo, Nicolas Schmidt, Sergio Bejar Bumba
 Mukherjee*
 
 <!-- badges: start -->
@@ -38,20 +38,12 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 
 ## Functions
 
-| Function                      | Description                                                                                                                                                                     |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mfsurv`                      | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. |
-| `stats`                       | a function to calculate the deviance information criterion (DIC) and the log-likelihood for fitted model objects of class mfsurv or mcmcsurv                                    |
-| `summary`                     | returns a summary of a mfsurv or mcmcsurv object via `coda::summary.mcmc`                                                                                                       |
-| `betas.post2`                 | log-posterior distribution of betas with pth element fixed as betas.p                                                                                                           |
-| `betas.slice.sampling2`       | slice sampling for betas                                                                                                                                                        |
-| `univ.betas.slice.sampling2`  | univariate slice sampling for betas.p                                                                                                                                           |
-| `gammas.post2`                | log-posterior distribution of gammas with pth element fixed as gammas.p                                                                                                         |
-| `gammas.slice.sampling2`      | slice sampling for gammas                                                                                                                                                       |
-| `univ.gammas.slice.sampling2` | univariate slice sampling for gammas.p                                                                                                                                          |
-| `lambda.post2`                | log-posterior distribution of lambda                                                                                                                                            |
-| `lambda.slice.sampling2`      | univariate slice sampling for lambda                                                                                                                                            |
-| `mcmcsurv`                    | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC)                                                                                  |
+| Function   | Description                                                                                                                                                                     |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mfsurv`   | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. |
+| `mcmcsurv` | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC)                                                                                  |
+| `stats`    | a function to calculate the deviance information criterion (DIC) and the log-likelihood for fitted model objects of class mfsurv or mcmcsurv                                    |
+| `summary`  | returns a summary of a mfsurv or mcmcsurv object via `coda::summary.mcmc`                                                                                                       |
 
 ### Example
 
@@ -158,60 +150,59 @@ summary(model1, parameter = c("betas"))
 
 ``` r
 model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
-                   N = 5000, 
+                   N = 500, 
                    burn = 50, 
                    thin = 5, 
                    w = c(0.5, 0.5, 0.5),
                    m = 10, 
                    form = "Weibull")
-#> [1] 5000
 ```
 
 ``` r
 stats(model2)
 #> $DIC
-#> [1] -931.7586
+#> [1] -990.6388
 #> 
 #> $Loglik
-#> [1] 406.9104
+#> [1] 437.1352
 
 summary(model2, parameter = c("betas"))
 #> 
-#> Iterations = 1:990
+#> Iterations = 1:90
 #> Thinning interval = 1 
 #> Number of chains = 1 
-#> Sample size per chain = 990 
+#> Sample size per chain = 90 
 #> 
 #> 1. Empirical mean and standard deviation for each variable,
 #>    plus standard error of the mean:
 #> 
-#>               Mean       SD  Naive SE Time-series SE
-#> X1         2.68471 1.314732 0.0417849      0.2507437
-#> Xcalinv   -0.07245 2.116387 0.0672632      0.1179179
-#> Xlnlevel  -0.95310 0.155614 0.0049457      0.0273686
-#> Xcalileve  0.04172 2.001157 0.0636009      0.1020426
-#> Xnecon    -2.35045 1.742575 0.0553827      0.0806998
-#> Xpresi     0.29023 0.283431 0.0090080      0.0094671
-#> Xtag       0.03425 0.113504 0.0036074      0.0050411
-#> Xrel       1.38129 0.621695 0.0197588      0.0327997
-#> Xethn      1.09136 0.576131 0.0183107      0.0558847
-#> Xprevdem   0.02767 0.303783 0.0096549      0.0118986
-#> Xopenc    -0.01128 0.005408 0.0001719      0.0003426
+#>                Mean       SD  Naive SE Time-series SE
+#> X1         1.578889 1.003823 0.1058122      0.4419339
+#> Xcalinv   -0.159537 1.715221 0.1808001      0.2209437
+#> Xlnlevel  -0.803092 0.137091 0.0144506      0.0564542
+#> Xcalileve -0.237241 2.015778 0.2124816      0.3347862
+#> Xnecon    -2.453700 1.658339 0.1748043      0.1748043
+#> Xpresi     0.310840 0.254532 0.0268300      0.0268300
+#> Xtag       0.005429 0.105255 0.0110948      0.0168405
+#> Xrel       1.201831 0.596156 0.0628403      0.1096212
+#> Xethn      1.337654 0.465448 0.0490626      0.0671351
+#> Xprevdem   0.065832 0.283995 0.0299357      0.0299357
+#> Xopenc    -0.011033 0.004427 0.0004666      0.0004666
 #> 
 #> 2. Quantiles for each variable:
 #> 
-#>               2.5%      25%      50%       75%     97.5%
-#> X1         0.32384  1.88424  2.58445  3.361645  6.006567
-#> Xcalinv   -4.17962 -1.34156 -0.03877  1.287575  4.095080
-#> Xlnlevel  -1.33382 -1.03360 -0.94671 -0.857819 -0.674370
-#> Xcalileve -4.01793 -1.19093  0.06782  1.290186  4.019956
-#> Xnecon    -6.10955 -3.45737 -2.24469 -1.078924  0.605109
-#> Xpresi    -0.25719  0.11335  0.28444  0.465635  0.870440
-#> Xtag      -0.19654 -0.03528  0.03904  0.112968  0.246827
-#> Xrel       0.12191  0.96021  1.36329  1.817703  2.555926
-#> Xethn     -0.05349  0.70977  1.07590  1.468425  2.185599
-#> Xprevdem  -0.62089 -0.15184  0.06012  0.241104  0.572129
-#> Xopenc    -0.02205 -0.01460 -0.01102 -0.007355 -0.001885
+#>              2.5%      25%       50%       75%     97.5%
+#> X1        -0.2014  0.86487  1.510504  2.350857  3.248243
+#> Xcalinv   -3.9800 -1.24104 -0.223195  0.966644  2.787786
+#> Xlnlevel  -1.0665 -0.89645 -0.796591 -0.699316 -0.569890
+#> Xcalileve -3.8423 -1.63756 -0.160260  1.043486  3.289683
+#> Xnecon    -5.5577 -3.50064 -2.510662 -1.449178  0.713268
+#> Xpresi    -0.2274  0.16517  0.298276  0.441525  0.749105
+#> Xtag      -0.1724 -0.06625  0.009062  0.070856  0.185798
+#> Xrel      -0.1265  0.86508  1.211858  1.517927  2.292984
+#> Xethn      0.5109  1.01230  1.349959  1.678986  2.128908
+#> Xprevdem  -0.5338 -0.09846  0.079818  0.246366  0.577457
+#> Xopenc    -0.0206 -0.01326 -0.010692 -0.008122 -0.003939
 ```
 
 <img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" /><img src="man/figures/README-unnamed-chunk-8-2.png" width="100%" />
