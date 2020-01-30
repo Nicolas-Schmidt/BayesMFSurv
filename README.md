@@ -3,7 +3,7 @@
 
 ## The `BayesMFSurv` package
 
-*Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba
+*Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Vineeta Yadav, Bumba
 Mukherjee*
 
 <!-- badges: start -->
