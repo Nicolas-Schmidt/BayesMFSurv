@@ -1,20 +1,20 @@
 
 
-#' @title betas.slice.sampling2
-#' @description slice sampling for betas
-#' @param Sigma.b variance estimate of betas
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param X covariates for betas
-#' @param betas current value of betas
-#' @param alpha probability of true censoring
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param w size of the slice in the slice sampling
-#' @param m limit on steps in the slice sampling
-#' @param form type of parametric model (Exponential or Weibull)
-#' @return One sample update using slice sampling
-#' @export
+# @title betas.slice.sampling2
+# @description slice sampling for betas
+# @param Sigma.b variance estimate of betas
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param X covariates for betas
+# @param betas current value of betas
+# @param alpha probability of true censoring
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param w size of the slice in the slice sampling
+# @param m limit on steps in the slice sampling
+# @param form type of parametric model (Exponential or Weibull)
+# @return One sample update using slice sampling
+# @export
 
 betas.slice.sampling2 <- function(Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, form){
 
@@ -26,26 +26,26 @@ betas.slice.sampling2 <- function(Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w,
 
 }
 
-#' @title univ.betas.slice.sampling2
-#' @description univariate slice sampling for betas.p
-#' @param betas.p current value of the pth element of betas
-#' @param p pth element
-#' @param Sigma.b variance estimate of betas
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param X covariates for betas
-#' @param betas current value of betas
-#' @param alpha probability of true censoring
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param w size of the slice in the slice sampling
-#' @param m limit on steps in the slice sampling
-#' @param lower lower bound on support of the distribution
-#' @param upper upper bound on support of the distribution
-#' @param form type of parametric model (Exponential or Weibull)
-#' @return One sample update using slice sampling
-#' @export
-#'
+# @title univ.betas.slice.sampling2
+# @description univariate slice sampling for betas.p
+# @param betas.p current value of the pth element of betas
+# @param p pth element
+# @param Sigma.b variance estimate of betas
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param X covariates for betas
+# @param betas current value of betas
+# @param alpha probability of true censoring
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param w size of the slice in the slice sampling
+# @param m limit on steps in the slice sampling
+# @param lower lower bound on support of the distribution
+# @param upper upper bound on support of the distribution
+# @param form type of parametric model (Exponential or Weibull)
+# @return One sample update using slice sampling
+# @export
+#
 univ.betas.slice.sampling2 <- function(betas.p, p, Sigma.b, Y, Y0, X, betas, alpha, C, lambda, w, m, lower = -Inf, upper = +Inf, form){
 
   b0 = betas.p
@@ -110,21 +110,21 @@ univ.betas.slice.sampling2 <- function(betas.p, p, Sigma.b, Y, Y0, X, betas, alp
 }
 
 
-#' @title betas.post2
-#' @description log-posterior distribution of betas with pth element fixed as betas.p
-#' @param betas.p current value of the pth element of betas
-#' @param p pth element
-#' @param Sigma.b variance estimate of betas
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param X covariates for betas
-#' @param betas current value of betas
-#' @param alpha probability of true censoring
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param form type of parametric model (Exponential or Weibull)
-#' @return log- posterior density of betas
-#' @export
+# @title betas.post2
+# @description log-posterior distribution of betas with pth element fixed as betas.p
+# @param betas.p current value of the pth element of betas
+# @param p pth element
+# @param Sigma.b variance estimate of betas
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param X covariates for betas
+# @param betas current value of betas
+# @param alpha probability of true censoring
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param form type of parametric model (Exponential or Weibull)
+# @return log- posterior density of betas
+# @export
 
 betas.post2 <- function(betas.p, p, Sigma.b, Y, Y0,  X, betas, alpha, C, lambda, form){
 
@@ -141,21 +141,21 @@ betas.post2 <- function(betas.p, p, Sigma.b, Y, Y0,  X, betas, alpha, C, lambda,
 }
 
 
-#' @title gammas.post2
-#' @description log-posterior distribution of gammas with pth element fixed as gammas.p
-#' @param gammas.p current value of the pth element of gammas
-#' @param p pth element
-#' @param Sigma.g variance estimate of gammas
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param eXB exponentiated vector of covariates times betas
-#' @param Z covariates for gammas
-#' @param gammas current value of gammas
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param form type of parametric model (Exponential or Weibull)
-#' @return log- posterior density of betas
-#' @export
+# @title gammas.post2
+# @description log-posterior distribution of gammas with pth element fixed as gammas.p
+# @param gammas.p current value of the pth element of gammas
+# @param p pth element
+# @param Sigma.g variance estimate of gammas
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param eXB exponentiated vector of covariates times betas
+# @param Z covariates for gammas
+# @param gammas current value of gammas
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param form type of parametric model (Exponential or Weibull)
+# @return log- posterior density of betas
+# @export
 
 gammas.post2 <- function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, form){
 
@@ -172,21 +172,21 @@ gammas.post2 <- function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda,
 }
 
 
-#' @title gammas.slice.sampling2
-#' @description slice sampling for gammas
-#' @param Sigma.g variance estimate of gammas
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param eXB exponentiated vector of covariates times betas
-#' @param Z covariates for gammas
-#' @param gammas current value of gammas
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param w size of the slice in the slice sampling
-#' @param m limit on steps in the slice sampling
-#' @param form type of parametric model (Exponential or Weibull)
-#' @return One sample update using slice sampling
-#' @export
+# @title gammas.slice.sampling2
+# @description slice sampling for gammas
+# @param Sigma.g variance estimate of gammas
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param eXB exponentiated vector of covariates times betas
+# @param Z covariates for gammas
+# @param gammas current value of gammas
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param w size of the slice in the slice sampling
+# @param m limit on steps in the slice sampling
+# @param form type of parametric model (Exponential or Weibull)
+# @return One sample update using slice sampling
+# @export
 
 gammas.slice.sampling2 <- function(Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w, m, form){
 
@@ -199,25 +199,25 @@ gammas.slice.sampling2 <- function(Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w,
 }
 
 
-#' @title univ.gammas.slice.sampling2
-#' @description univariate slice sampling for gammas.p
-#' @param gammas.p current value of the pth element of gammas
-#' @param p pth element
-#' @param Sigma.g variance estimate of gammas
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param eXB exponentiated vector of covariates times betas
-#' @param Z covariates for gammas
-#' @param gammas current value of gammas
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param w size of the slice in the slice sampling
-#' @param m limit on steps in the slice sampling
-#' @param lower lower bound on support of the distribution
-#' @param upper upper bound on support of the distribution
-#' @param form type of parametric model (Exponential or Weibull)
-#' @return One sample update using slice sampling
-#' @export
+# @title univ.gammas.slice.sampling2
+# @description univariate slice sampling for gammas.p
+# @param gammas.p current value of the pth element of gammas
+# @param p pth element
+# @param Sigma.g variance estimate of gammas
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param eXB exponentiated vector of covariates times betas
+# @param Z covariates for gammas
+# @param gammas current value of gammas
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param w size of the slice in the slice sampling
+# @param m limit on steps in the slice sampling
+# @param lower lower bound on support of the distribution
+# @param upper upper bound on support of the distribution
+# @param form type of parametric model (Exponential or Weibull)
+# @return One sample update using slice sampling
+# @export
 
 univ.gammas.slice.sampling2 <- function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gammas, C, lambda, w, m, lower = -Inf, upper = +Inf, form){
 
@@ -284,18 +284,18 @@ univ.gammas.slice.sampling2 <- function(gammas.p, p, Sigma.g, Y, Y0, eXB, Z, gam
 
 
 
-#' @title lambda.post2
-#' @description log-posterior distribution of lambda
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param eXB exponentiated vector of covariates times betas
-#' @param alpha probability of true censoring
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param a shape parameter of gammas prior
-#' @param b scale parameter of gammas prior
-#' @return log- posterior density of betas
-#' @export
+# @title lambda.post2
+# @description log-posterior distribution of lambda
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param eXB exponentiated vector of covariates times betas
+# @param alpha probability of true censoring
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param a shape parameter of gammas prior
+# @param b scale parameter of gammas prior
+# @return log- posterior density of betas
+# @export
 
 lambda.post2 <- function(Y, Y0, eXB, alpha, C, lambda, a = 1, b = 1){
 
@@ -305,20 +305,20 @@ lambda.post2 <- function(Y, Y0, eXB, alpha, C, lambda, a = 1, b = 1){
 
 }
 
-#' @title lambda.slice.sampling2
-#' @description univariate slice sampling for lambda
-#' @param Y the time (duration) dependent variable for the survival stage (t).
-#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param eXB exponentiated vector of covariates times betas
-#' @param alpha probability of true censoring
-#' @param C censoring indicator
-#' @param lambda current value of lambda
-#' @param w size of the slice in the slice sampling
-#' @param m limit on steps in the slice sampling
-#' @param lower lower bound on support of the distribution
-#' @param upper upper bound on support of the distribution
-#' @return One sample update using slice sampling
-#' @export
+# @title lambda.slice.sampling2
+# @description univariate slice sampling for lambda
+# @param Y the time (duration) dependent variable for the survival stage (t).
+# @param Y0 the elapsed time since inception until the beginning of time period (t-1).
+# @param eXB exponentiated vector of covariates times betas
+# @param alpha probability of true censoring
+# @param C censoring indicator
+# @param lambda current value of lambda
+# @param w size of the slice in the slice sampling
+# @param m limit on steps in the slice sampling
+# @param lower lower bound on support of the distribution
+# @param upper upper bound on support of the distribution
+# @return One sample update using slice sampling
+# @export
 
 lambda.slice.sampling2 <- function(Y, Y0, eXB, alpha, C, lambda, w, m, lower = 0.01, upper = +Inf){
 
