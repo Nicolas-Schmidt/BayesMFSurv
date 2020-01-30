@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## The `BayesMFSurv` package
 
-_Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee_
+_Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Vineeta Yadav, Bumba Mukherjee_
 
 <!-- badges: start -->
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
