@@ -3,8 +3,7 @@
 
 ## The `BayesMFSurv` package
 
-*Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Vineeta Yadav, Bumba
-Mukherjee*
+*Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee, Vineeta Yadav*
 
 <!-- badges: start -->
 
@@ -40,8 +39,8 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 
 | Function   | Description                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mfsurv`   | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. |
-| `mcmcsurv` | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC)                                                                                  |
+| `mfsurv`   | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. Slice sampling is employed to draw the posterior sample of the model's split and survival stage parameters.
+| `mcmcsurv` | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC). Slice sampling is employed to draw the posterior sample of the model's survival stage parameters.                                                                                                               |
 | `stats`    | a function to calculate the deviance information criterion (DIC) and the log-likelihood for fitted model objects of class mfsurv or mcmcsurv                                    |
 | `summary`  | returns a summary of a mfsurv or mcmcsurv object via `coda::summary.mcmc`                                                                                                       |
 
