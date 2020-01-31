@@ -3,13 +3,17 @@
 
 ## The `BayesMFSurv` package
 
-*Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee, Vineeta Yadav*
+*Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee, Vineeta
+Yadav*
 
 <!-- badges: start -->
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/BayesMFSurv?color=brightgreen)](https://www.r-pkg.org/pkg/BayesMFSurv)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
 ### Description
@@ -37,12 +41,12 @@ remotes::install_github("Nicolas-Schmidt/BayesMFSurv")
 
 ## Functions
 
-| Function   | Description                                                                                                                                                                     |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `mfsurv`   | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. Slice sampling is employed to draw the posterior sample of the model's split and survival stage parameters.
-| `mcmcsurv` | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC). Slice sampling is employed to draw the posterior sample of the model's survival stage parameters.                                                                                                               |
-| `stats`    | a function to calculate the deviance information criterion (DIC) and the log-likelihood for fitted model objects of class mfsurv or mcmcsurv.                                    |
-| `summary`  | returns a summary of a mfsurv or mcmcsurv object via `coda::summary.mcmc`.                                                                                                       |
+| Function   | Description                                                                                                                                                                                                                                                                                 |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `mfsurv`   | fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the probability of misclassification in the first stage and the hazard in the second stage. Slice sampling is employed to draw the posterior sample of the model’s split and survival stage parameters. |
+| `mcmcsurv` | estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC). Slice samplig is employed to draw the posterior sample of the model’s survival stage parameters.                                                                                            |
+| `stats`    | a function to calculate the deviance information criterion (DIC) and the log-likelihood for fitted model objects of class mfsurv or mcmcsurv.                                                                                                                                               |
+| `summary`  | returns a summary of a mfsurv or mcmcsurv object via `coda::summary.mcmc`.                                                                                                                                                                                                                  |
 
 ### Example
 
