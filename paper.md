@@ -61,6 +61,6 @@ The ease and speed of estimating the Bayesian standard and MF parametric surviva
 
 # Availability
 
-`BayesMFSurv` is an open source software made available under the MIT license. It can be installed from its github repository using the `remotes` package: `remotes::install_git(remotes::install_github("Nicolas-Schmidt/BayesMFSurv")`.
+`BayesMFSurv` is an open source software made available under the MIT license. It can be installed from its github repository using the `remotes` package: `remotes::install_git("Nicolas-Schmidt/BayesMFSurv")`.
 
 # References
