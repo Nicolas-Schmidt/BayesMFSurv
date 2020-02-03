@@ -54,11 +54,8 @@ The R package `BayesMFSurv` contains four functions to fit the parametric (Weibu
 
 
 *`mfsurv`: Fits a parametric MF model via Bayesian MCMC with slice-sampling to estimate the misclassification failure probability in the split (first) stage and hazard in the second (survival) stage. Slice-sampling, which is conducted by using the univariate slice sampler [@neal2003slice], is employed to draw the posterior sample of the model's split and survival stage parameters.
-
 *`mcmcsurv`: Fits a standard parametric survival model via Bayesian MCMC with slice-sampling employed to draw the posterior sample of the model's survival stage parameters.
-
 *`stats`: Calculates log-likelihood and deviance information criterion (DIC) for fitted model objects of class `mfsurv` _and_ `mcmcsurv`.
-
 *`summary`: Summarizes Bayesian MCMC output -this includes the mean, standard deviation, standard error of the mean, and 95 credible interval- of each parameter's posterior distribution from the Bayesian standard and MF parametric survival models.
 
 
