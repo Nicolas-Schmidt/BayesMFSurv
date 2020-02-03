@@ -17,7 +17,10 @@ Authors@R: c(person(given = "Minnie M.",
                     role = c("aut")),
 	         person(given = "Bumba", 
                     family = "Mukherjee", 
-                    role = c("aut"))
+                    role = c("aut")),
+            person(given = "Benjamin", 
+                    family = "Bagozzi", 
+                    role = c("ctb"))
                     )
 Description: Contains a split population survival estimator that models the 
     misclassification probability of failure versus right-censored events.  
@@ -28,6 +31,7 @@ Encoding: UTF-8
 LazyData: true
 Depends:
     R (>= 3.5.0)
+URL: https://github.com/Nicolas-Schmidt/BayesMFSurv
 Imports:
 	MCMCpack,
 	FastGP,

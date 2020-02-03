@@ -96,9 +96,9 @@ C   <- RBS$C
 Z1  <- cbind(rep(1,nrow(RBS)))
 Y0  <- RBS$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
-                 N = 15000,
-                 burn = 500,
-                 thin = 10,
+                 N = 100000,
+                 burn = 10000,
+                 thin = 100,
                  w = c(0.5, .5, .5),
                  m = 20,
                  form = "Weibull",
