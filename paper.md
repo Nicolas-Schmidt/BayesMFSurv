@@ -50,14 +50,14 @@ Since the underestimates of duration are non-random, bias will arise in survival
 
 # BayesMFSurv R Package
 
-The R package `BayesMFSurv` contains four functions to fit the parametric (Weibull and Exponential) (i) standard survival model and (ii) Misclassified Failure (MF) survival model via Bayesian MCMC using a slice-sampling algorithm described in [@bagozzi2019bayesian]. Bayesian MCMC estimation is conducted by using the Multivariate Normal prior for these models' split and survival stage parameters, and the Gamma prior for the shape parameter. The four functions in `BayesMFSurv`are:   
+The R package `BayesMFSurv` contains four functions to fit the parametric (Weibull and Exponential) (i) standard survival model and (ii) Misclassified Failure (MF) survival model via Bayesian MCMC using a slice-sampling algorithm described in [@bagozzi2019bayesian]. Bayesian MCMC estimation is conducted by using the Multivariate Normal prior for these models' split and survival stage parameters, and the Gamma prior for the shape parameter. The four functions in `BayesMFSurv` are:   
 
 * `mfsurv`: Fits a parametric MF model via Bayesian MCMC with slice-sampling to estimate the misclassification failure probability in the split (first) stage and hazard in the second (survival) stage. Slice-sampling, which is conducted by using the univariate slice sampler [@neal2003slice], is employed to draw the posterior sample of the model's split and survival stage parameters.
 * `mcmcsurv`: Fits a standard parametric survival model via Bayesian MCMC with slice-sampling employed to draw the posterior sample of the model's survival stage parameters.
 * `stats`: Calculates log-likelihood and deviance information criterion (DIC) for fitted model objects of class `mfsurv` _and_ `mcmcsurv`.
 * `summary`: Summarizes Bayesian MCMC output -this includes the mean, standard deviation, standard error of the mean, and 95 credible interval- of each parameter's posterior distribution from the Bayesian standard and MF parametric survival models.
 
-The ease and speed of estimating the Bayesian standard and MF parametric survival models in `BayesMFSurv` is improved by using `C++` to perform computationally intensive routines (e.g. slice-sampling) before pulling the output into R. Users can also illustrate trace-plots and kernel density plots for each parameter from `mcmcsurv` and `mfsurv` that fits the Bayesian standard and MF parametric models respectively. To illustrate the `BayesMFSurv` package's functionality, all the four functions listed above has been tested on a survival dataset of democratic regime failure [@reenock2007regressive] described and included in this package.
+The ease and speed of estimating the Bayesian standard and MF parametric survival models in `BayesMFSurv` is improved by using `C++` to perform computationally intensive routines (e.g. slice-sampling) before pulling the output into R. Users can also illustrate trace-plots and kernel density plots for each parameter from `mcmcsurv` and `mfsurv` that fits the Bayesian standard and MF parametric models respectively. To illustrate the `BayesMFSurv` package's functionality, all the four functions listed above have been tested on a survival dataset of democratic regime failure [@reenock2007regressive] described and included in this package.
 
 # Availability
 
