@@ -2,7 +2,7 @@
 #' @description Markov Chain Monte Carlo (MCMC) to run Bayesian survival (Weibull) model
 #'
 #' @param Y response variable
-#' @param Y0 add...
+#' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
 #' @param C censoring indicator
 #' @param X covariates for betas
 #' @param N number of MCMC iterations
