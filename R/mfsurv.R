@@ -12,7 +12,7 @@
 
 #' @title mfsurv
 #' @description \code{mfsurv} fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage
-#'  and the hazard in the second stage.
+#'  and the hazard in the second stage. Slice sampling is employed to draw the posterior sample of the model's split and survival stage parameters.
 #' @param formula a formula in the form Y ~ X1 + X2... | C ~ Z1 + Z2 ... where Y is the duration until failure or censoring, and C is a binary indicator of observed failure.
 #' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
 #' @param data list object of data.
