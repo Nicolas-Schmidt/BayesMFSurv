@@ -153,15 +153,15 @@ mfsurv <-function(formula, Y0, data = list(), N, burn, thin, w = c(1,1,1), m = 1
 summary.mfsurv <- function(object, parameter = c("betas", "gammas", "lambda"), ...){
 
   if (parameter == "betas"){
-    sum <- summary(mcmc(object$betas))
+    sum <- summary(mcmc(object$betas), ...)
     return(sum)
   }
   if (parameter == "gammas"){
-    sum <- summary(mcmc(object$gammas))
+    sum <- summary(mcmc(object$gammas), ...)
     return(sum)
   }
   if (parameter == "lambda"){
-    sum <- summary(mcmc(object$lambda))
+    sum <- summary(mcmc(object$lambda), ...)
     return(sum)
   }
 }

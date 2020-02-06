@@ -10,9 +10,27 @@
 #' @param thin thinning to prevent from autocorrelation.
 #' @param w size of the slice in the slice sampling for (betas, gammas, rho).
 #' @param m limit on steps in the slice sampling.
-#' @param form type of parametric model (Exponential or Weibull). 
+#' @param form type of parametric model (Exponential or Weibull).
 #'
-#' @return chain of the variables of interest. 
+#' @return chain of the variables of interest.
+#'
+#' @examples
+#' set.seed(95)
+#' bgl <- Buhaugetal_2009_JCR
+#' bgl <- subset(bgl, coupx == 0)
+#' bgl <- na.omit(bgl)
+#' Y   <- bgl$Y
+#' X   <- as.matrix(cbind(1, bgl[,1:7]))
+#' C   <- bgl$C
+#' Y0  <- bgl$Y0
+#' model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X,
+#'                    N = 50,
+#'                    burn = 20,
+#'                    thin = 15,
+#'                    w = c(0.5, 0.5, 0.5),
+#'                    m = 5,
+#'                    form = "Weibull")
+#' summary(model2)
 #'
 #' @export
 mcmcsurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {
@@ -62,11 +80,11 @@ mcmcsurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {
 summary.mcmcsurv <- function(object, parameter = c("betas", "rho"), ...){
 
     if (parameter == "betas"){
-        sum <- summary(mcmc(object$betas))
+        sum <- summary(mcmc(object$betas), ...)
         return(sum)
     }
     if (parameter == "rho"){
-        sum <- summary(mcmc(object$lambda))
+        sum <- summary(mcmc(object$lambda), ...)
         return(sum)
     }
 }

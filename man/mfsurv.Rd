@@ -73,7 +73,7 @@ list. Empirical mean, standard deviation and quantiles for each variable.
 }
 \description{
 \code{mfsurv} fits a parametric Bayesian MF model via Markov Chain Monte Carlo (MCMC) to estimate the misclassification in the first stage
- and the hazard in the second stage.
+ and the hazard in the second stage. Slice sampling is employed to draw the posterior sample of the model's split and survival stage parameters.
 
 Returns a summary of a mfsurv object via \code{\link[coda]{summary.mcmc}}.
 }
