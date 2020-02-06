@@ -1,6 +1,6 @@
 #' @title mcmcsurv
 #'
-#' @description estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC). Slice samplig is employed to draw the posterior sample of the model's survival stage parameters.
+#' @description \code{mcmcsurv} estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC). Slice samplig is employed to draw the posterior sample of the model's survival stage parameters.
 #' @param Y response variable.
 #' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
 #' @param C censoring indicator.
