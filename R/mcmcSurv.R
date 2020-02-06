@@ -1,18 +1,18 @@
 #' @title mcmcsurv
-#' @description Markov Chain Monte Carlo (MCMC) to run Bayesian survival (Weibull) model
 #'
-#' @param Y response variable
+#' @description estimates a Bayesian Exponential or Weibull survival model via Markov Chain Monte Carlo (MCMC). Slice samplig is employed to draw the posterior sample of the model's survival stage parameters.
+#' @param Y response variable.
 #' @param Y0 the elapsed time since inception until the beginning of time period (t-1).
-#' @param C censoring indicator
-#' @param X covariates for betas
-#' @param N number of MCMC iterations
-#' @param burn burn-in to be discarded
-#' @param thin thinning to prevent from autocorrelation
-#' @param w size of the slice in the slice sampling for (betas, gammas, rho)
-#' @param m limit on steps in the slice sampling
-#' @param form type of parametric model (Exponential or Weibull)
+#' @param C censoring indicator.
+#' @param X covariates for betas.
+#' @param N number of MCMC iterations.
+#' @param burn burn-in to be discarded.
+#' @param thin thinning to prevent from autocorrelation.
+#' @param w size of the slice in the slice sampling for (betas, gammas, rho).
+#' @param m limit on steps in the slice sampling.
+#' @param form type of parametric model (Exponential or Weibull). 
 #'
-#' @return chain of the variables of interest
+#' @return chain of the variables of interest. 
 #'
 #' @export
 mcmcsurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {
