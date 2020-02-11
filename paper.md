@@ -4,7 +4,7 @@ authors:
 - affiliation: 1
   name: Minnie M. Joo
 - affiliation: 2
-  name: Nicolas Schmidt
+  name: Nicolás Schmidt
   orcid: 0000-0001-5083-5792
 - affiliation: 3
   name: Sergio Bejar
