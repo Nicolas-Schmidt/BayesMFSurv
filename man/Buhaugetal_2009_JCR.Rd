@@ -25,7 +25,7 @@ presented in \href{http://bit.ly/38eDsnG}{Bagozzi et al. (2019)}.
    \item{borddist}{confbord * lndistx centred.}
    \item{figcapdum}{rebel fighting capacity at least moderate.}
    \item{lgdp_onset}{gdp capita in onset year.}
-   \item{sip2l_onset}{Gates et al. (2006) SIP code (1 year lag) for the onset year.}
+   \item{sip2l_onset}{\href{http://bit.ly/3ddGrPC}{Gates et al. (2006)} SIP code (1 year lag) for the onset year.}
    \item{pcw}{post cold war period, 1989+.}
    \item{frst}{percentage of forest in conflict zone.}
    \item{mt}{percentage of mountains in conflict zone.}

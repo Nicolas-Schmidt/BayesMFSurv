@@ -26,7 +26,7 @@
 #' @name RBS
 #' @usage data(RBS)
 #' @format A data frame with 1794 rows and 13 variables
-#' @source Reenock, Christopher, Bernhard,Michael, Sobek, David (2007), Regressive Socioeconomic Distribution and Democratic Survival, International Studies Quarterly, Volume 51, Issue 3, September 2007, Pages 677–699
+#' @source Reenock, Christopher, Bernhard, Michael, Sobek, David (2007), Regressive Socioeconomic Distribution and Democratic Survival, International Studies Quarterly, Volume 51, Issue 3, September 2007, Pages 677–699
 "RBS"
 
 

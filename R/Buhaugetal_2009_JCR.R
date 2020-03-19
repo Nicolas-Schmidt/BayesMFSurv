@@ -13,7 +13,7 @@
 #'    \item{borddist}{confbord * lndistx centred.}
 #'    \item{figcapdum}{rebel fighting capacity at least moderate.}
 #'    \item{lgdp_onset}{gdp capita in onset year.}
-#'    \item{sip2l_onset}{Gates et al. (2006) SIP code (1 year lag) for the onset year.}
+#'    \item{sip2l_onset}{\href{http://bit.ly/3ddGrPC}{Gates et al. (2006)} SIP code (1 year lag) for the onset year.}
 #'    \item{pcw}{post cold war period, 1989+.}
 #'    \item{frst}{percentage of forest in conflict zone.}
 #'    \item{mt}{percentage of mountains in conflict zone.}
@@ -29,6 +29,3 @@
 #' @format A data frame with 1562 rows and 13 variables
 #' @source Buhaug, Halvard, Scott Gates, and Päivi Lujala (2009), Geography, rebel capability, and the duration of civil conflict,  Journal of Conflict Resolution 53(4), 544 - 569.
 "Buhaugetal_2009_JCR"
-
-
-
