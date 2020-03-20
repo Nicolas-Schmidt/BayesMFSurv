@@ -86,7 +86,7 @@ variables.
 library(BayesMFSurv)
 
 set.seed(95)
-RBS <- na.omit(RBS)
+RBS <- data(RBS)
 Y   <- RBS$Y
 X   <- as.matrix(cbind(1, RBS[,1:10]))
 C   <- RBS$C
