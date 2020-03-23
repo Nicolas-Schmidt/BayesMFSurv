@@ -59,8 +59,7 @@
 #'                 thin = 15,
 #'                 w = c(0.1, .1, .1),
 #'                 m = 5,
-#'                 form = "Weibull",
-#'                 na.action = 'na.omit')
+#'                 form = "Weibull")
 #' @export
 
 mfsurv <-function(formula, Y0, data = list(), N, burn, thin, w = c(1,1,1), m = 10,
@@ -165,3 +164,7 @@ summary.mfsurv <- function(object, parameter = c("betas", "gammas", "lambda"), .
     return(sum)
   }
 }
+
+
+
+

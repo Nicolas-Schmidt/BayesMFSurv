@@ -27,6 +27,7 @@
 #' stats(model1)
 #' @export
 
+
 stats <- function(object){
 
     class.object <- c("mfsurv","mcmcsurv")
@@ -99,4 +100,12 @@ stats <- function(object){
             list(DIC = DIC, Loglik = L)
     }
 }
+
+
+
+
+
+
+
+
 

@@ -81,7 +81,7 @@ The data used to estimate the following examples come from Reenock, Bernhard and
 
 
 #### Misclassified-Failure
-```{r example, eval = FALSE}
+```{r}
 
 # Baseline Bayesian misclassified failure (MF) model. 
 # Misclassification stage only includes the intercept while the survival stage 
@@ -90,27 +90,22 @@ The data used to estimate the following examples come from Reenock, Bernhard and
 library(BayesMFSurv)
 
 set.seed(95)
-RBS <- data(RBS)
+data(RBS)
+RBS <- na.omit(RBS)
 Y   <- RBS$Y
 X   <- as.matrix(cbind(1, RBS[,1:10]))
 C   <- RBS$C
 Z1  <- cbind(rep(1,nrow(RBS)))
 Y0  <- RBS$Y0
 model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
-                 N = 100000,
-                 burn = 10000,
-                 thin = 100,
-                 w = c(0.5, .5, .5),
+                 N = 100,
+                 burn = 50,
+                 thin = 5,
+                 w = c(0.5, 0.5, 0.5),
                  m = 20,
-                 form = "Weibull",
-                 na.action = 'na.omit')
+                 form = 'Weibull')
 
-```{r, echo = FALSE}
-library(BayesMFSurv)
-model1 <- rio::import(here::here("data-raw", "model1_output.rds"))
-```
 
-```{r}
 stats(model1)
 
 summary(model1, parameter = c("betas"))
@@ -120,39 +115,21 @@ summary(model1, parameter = c("betas"))
 
 
 
-```{r, eval = FALSE}
+```{r}
 set.seed(95)
 model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X, 
-                   N = 15000, 
-                   burn = 500, 
-                   thin = 10, 
+                   N = 100, 
+                   burn = 50, 
+                   thin = 5, 
                    w = c(0.5, 0.5, 0.5),
                    m = 20, 
-                   form = "Weibull")
-
-```
-
-```{r, echo = FALSE}
-model2 <- rio::import(here::here("data-raw", "model2_output.rds"))
-```
+                   form = 'Weibull')
 
 
-```{r}
 stats(model2)
 
 summary(model2, parameter = c("betas"))
 ```
-
-
-```{r, echo = FALSE}
-par(mfrow = c(3,4))
-for(i in 1:ncol(model2$betas)){
-    plot(density(model2$betas[,i]), main = i, ylab = "")}
-par(mfrow = c(3,4))
-for(i in 1:ncol(model2$betas)){plot(model2$betas[,i], type = 'l', ylab = "", xlab = "", main = i)}
-```
-
-
 
 
 
