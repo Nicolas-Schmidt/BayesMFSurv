@@ -17,13 +17,6 @@ knitr::opts_chunk$set(
 
 _Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee, Vineeta Yadav_
 
-<!-- badges: start -->
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![CRAN RStudio mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
-[![CRAN RStudio mirrordownloads](https://cranlogs.r-pkg.org/badges/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
-<!-- badges: end -->
-
 
 ### Description
 
@@ -84,7 +77,7 @@ The data used to estimate the following examples come from Reenock, Bernhard and
 
 `mfsurv` should be used when user suspects that data of survival cases could be right-sensored (i.e. when there is a probability that failure events are misclassified). 
 
-Example with N = 100,000 is here: https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
+Example with N = 100,000 is [here](https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw).
 
 ```{r}
 

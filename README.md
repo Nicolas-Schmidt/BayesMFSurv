@@ -6,18 +6,6 @@
 *Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee, Vineeta
 Yadav*
 
-<!-- badges: start -->
-
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![CRAN RStudio
-mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
-[![CRAN RStudio
-mirrordownloads](https://cranlogs.r-pkg.org/badges/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
-<!-- badges: end -->
-
 ### Description
 
 Contains a split population survival estimator that models the
@@ -77,11 +65,15 @@ variables.
 
 #### Misclassified-Failure
 
-`mfsurv` estimated the probability of misclassification failure in the first (split) stage and hazard in the second (survival) stage. 
+`mfsurv` estimated the probability of misclassification failure in the
+first (split) stage and hazard in the second (survival) stage.
 
-`mfsurv` should be used when user suspects that data of survival cases could be right-sensored (i.e. when there is a probability that failure events are misclassified). 
+`mfsurv` should be used when user suspects that data of survival cases
+could be right-sensored (i.e. when there is a probability that failure
+events are misclassified).
 
-Example with N = 100,000 is here:  https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
+Example with N = 100,000 is
+[here](https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw).
 
 ``` r
 
@@ -157,9 +149,12 @@ summary(model1, parameter = c("betas"))
 ```
 
 #### Non Misclassified-Failure
-`mcmcsurv` estimates a Bayesian equivalent of standard survival models (i.e. Exponential or Weibull).   
 
-Example with N=15000 can be found here:  https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
+`mcmcsurv` estimates a Bayesian equivalent of standard survival models
+(i.e. Exponential or Weibull).
+
+\#Example with N=15000 can be found here:
+<https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw>
 
 ``` r
 set.seed(95)
