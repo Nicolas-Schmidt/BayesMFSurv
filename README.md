@@ -77,6 +77,10 @@ variables.
 
 #### Misclassified-Failure
 
+`mfsurv` estimated the probability of misclassification failure in the first (split) stage and hazard in the second (survival) stage. 
+
+`mfsurv` should be used when user suspects that data of survival cases could be right-sensored (i.e. when there is a probability that failure events are misclassified). 
+
 Example with N = 100,000 is here:  https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
 
 ``` r
