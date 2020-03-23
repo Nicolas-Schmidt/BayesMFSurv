@@ -155,7 +155,7 @@ summary(model1, parameter = c("betas"))
 #### Non Misclassified-Failure
 `mcmcsurv` estimates a Bayesian equivalent of standard survival models (i.e. Exponential or Weibull).   
 
-#Example with N=15000 can be found here:  https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
+Example with N=15000 can be found here:  https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
 
 ``` r
 set.seed(95)
