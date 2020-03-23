@@ -77,6 +77,8 @@ variables.
 
 #### Misclassified-Failure
 
+Example with N = 100,000 is here:  https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
+
 ``` r
 
 # Baseline Bayesian misclassified failure (MF) model. 
