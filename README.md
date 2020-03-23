@@ -85,8 +85,6 @@ Example with N = 100,000 is here:  https://github.com/Nicolas-Schmidt/BayesMFSur
 # Misclassification stage only includes the intercept while the survival stage 
 # includes all covariates described above.  
 
-# Examples that use a larger N can be found here:  https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw
-
 library(BayesMFSurv)
 
 set.seed(95)
