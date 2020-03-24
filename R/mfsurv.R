@@ -2,8 +2,6 @@
 #' @importFrom stats dgamma runif as.formula model.frame model.matrix model.response na.omit na.pass
 #' @import grDevices
 #' @import graphics
-# @import RcppArmadillo
-# @importFrom Rcpp sourceCpp
 #' @importFrom MCMCpack riwish
 #' @importFrom coda mcmc
 #' @importFrom mvtnorm rmvnorm dmvnorm
