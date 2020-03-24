@@ -84,7 +84,7 @@ first (split) stage and hazard in the second (survival) stage.
 could be right-sensored (i.e. when there is a probability that failure
 events are misclassified).
 
-Example with N = 100,000 is
+Example with N = 100000 is
 [here](https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw).
 
 ``` r
@@ -165,8 +165,8 @@ summary(model1, parameter = c("betas"))
 `mcmcsurv` estimates a Bayesian equivalent of standard survival models
 (i.e. Exponential or Weibull).
 
-\#Example with N=15000 can be found here:
-<https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw>
+Example with N = 15000 can be found
+[here](https://github.com/Nicolas-Schmidt/BayesMFSurv/tree/master/data-raw).
 
 ``` r
 set.seed(95)
