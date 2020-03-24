@@ -9,13 +9,15 @@ Yadav*
 <!-- badges: start -->
 
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
-[![Project Status: Active – The project has reached a stable, usable
+[![Project Status: Active â€“ The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
+[![Travis build
+status](https://travis-ci.com/Nicolas-Schmidt/BayesMFSurv.svg?branch=master)](https://travis-ci.com/Nicolas-Schmidt/BayesMFSurv)
 <!-- badges: end -->
 
 ### Description
