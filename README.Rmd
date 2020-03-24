@@ -115,6 +115,7 @@ model1 <- mfsurv(Y ~ X | C ~ Z1, Y0 = Y0,
 stats(model1)
 
 summary(model1, parameter = c("betas"))
+
 ```
 
 #### Non Misclassified-Failure
