@@ -52,7 +52,7 @@ Since the underestimates of duration are non-random, bias will arise in survival
 
 # BayesMFSurv R Package
 
-The R package `BayesMFSurv` contains four functions to fit the parametric (Weibull and Exponential) (i) standard survival model and (ii) MF survival model via Bayesian MCMC using a slice-sampling algorithm described in @bagozzi2019bayesian. Bayesian MCMC estimation is conducted by using the Multivariate Normal prior for these models' split and survival stage parameters, and the Gamma prior for the shape parameter. The four functions in `BayesMFSurv` are:   
+The R package `BayesMFSurv` contains four functions to fit the parametric (Weibull and Exponential) (i) standard survival model and (ii) MF survival model via Bayesian MCMC using a slice-sampling algorithm described in @bagozzi2019bayesian. Bayesian MCMC estimation is conducted by using the Multivariate Normal prior for these models' split and survival stage parameters, and the Gamma prior for the shape parameter. The functions in `BayesMFSurv` are:   
 
 * `mfsurv`: Fits a parametric MF model via Bayesian MCMC with slice-sampling to estimate the misclassification failure probability in the split (first) stage and hazard in the second (survival) stage. Slice-sampling, which is conducted by using the univariate slice sampler [@neal2003slice], is employed to draw the posterior sample of the model's split and survival stage parameters.
 * `mcmcsurv`: Fits a standard parametric survival model via Bayesian MCMC with slice-sampling employed to draw the posterior sample of the model's survival stage parameters.
