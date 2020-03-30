@@ -7,7 +7,7 @@ authors:
   name: Nicolás Schmidt
   orcid: 0000-0001-5083-5792
 - affiliation: 3
-  name: Sergio Bejar
+  name: Sergio Béjar
   orcid: 0000-0002-9352-3892
 - affiliation: 4
   name: Vineeta Yadav
