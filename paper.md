@@ -59,7 +59,7 @@ The R package `BayesMFSurv` contains four functions to fit the parametric (Weibu
 * `stats`: Calculates log-likelihood and deviance information criterion (DIC) for fitted model objects of class `mfsurv` _and_ `mcmcsurv`.
 * `summary`: Summarizes Bayesian MCMC output -this includes the mean, standard deviation, standard error of the mean, and 95 credible interval- of each parameter's posterior distribution from the Bayesian standard and MF parametric survival models.
 
-The ease and speed of estimating the Bayesian standard and MF parametric survival models in `BayesMFSurv` is improved by using `C++` to perform computationally intensive routines (e.g. slice-sampling) before pulling the output into R. Users can also illustrate trace-plots and kernel density plots for each parameter from `mcmcsurv` and `mfsurv` that fits the Bayesian standard and MF parametric models respectively. To illustrate the `BayesMFSurv` package's functionality, all the four functions listed above have been tested on a survival dataset of democratic regime failure [@reenock2007regressive] described and included in this package.
+The ease and speed of estimating the Bayesian standard and MF parametric survival models in `BayesMFSurv` is improved by using `C++` to perform computationally intensive routines (e.g. slice-sampling) before pulling the output into R. Users can also illustrate trace-plots and kernel density plots for each parameter from `mcmcsurv` and `mfsurv` that fits the Bayesian standard and MF parametric models respectively. To illustrate the `BayesMFSurv` package's functionality, all the functions listed above have been tested on a survival dataset of democratic regime failure [@reenock2007regressive] described and included in this package.
 
 # Availability
 
