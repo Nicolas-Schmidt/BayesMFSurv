@@ -18,6 +18,8 @@ mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/BayesMFSurv?color
 mirrordownloads](https://cranlogs.r-pkg.org/badges/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
 [![Travis build
 status](https://travis-ci.com/Nicolas-Schmidt/BayesMFSurv.svg?branch=master)](https://travis-ci.com/Nicolas-Schmidt/BayesMFSurv)
+[![DOI](https://zenodo.org/badge/226979997.svg)](https://zenodo.org/badge/latestdoi/226979997)
+
 <!-- badges: end -->
 
 ### Description
