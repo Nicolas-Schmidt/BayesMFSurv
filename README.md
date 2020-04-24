@@ -21,6 +21,7 @@ mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/BayesMFSurv?color
 [![CRAN RStudio
 mirrordownloads](https://cranlogs.r-pkg.org/badges/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
 [![DOI](https://zenodo.org/badge/226979997.svg)](https://zenodo.org/badge/latestdoi/226979997)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.02164/status.svg)](https://doi.org/10.21105/joss.02164)
 
 <!-- badges: end -->
 
