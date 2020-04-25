@@ -8,9 +8,10 @@ Yadav*
 
 <!-- badges: start -->
 
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
+[![](https://img.shields.io/badge/devel%20version-1.4.0-blue.svg)](https://github.com/Nicolas-Schmidt/IntRo)
 [![R build
 status](https://github.com/Nicolas-Schmidt/BayesMFSurv/workflows/R-CMD-check/badge.svg)](https://github.com/Nicolas-Schmidt/BayesMFSurv/actions)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
 [![Project Status: Active â€“ The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)

@@ -19,8 +19,10 @@ _Minnie M. Joo, Nicolas Schmidt, Sergio Bejar, Bumba Mukherjee, Vineeta Yadav_
 
 
 <!-- badges: start -->
-[![R build status](https://github.com/Nicolas-Schmidt/BayesMFSurv/workflows/R-CMD-check/badge.svg)](https://github.com/Nicolas-Schmidt/BayesMFSurv/actions)
+
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/BayesMFSurv)](https://cran.r-project.org/package=BayesMFSurv)
+`r badger::badge_devel("Nicolas-Schmidt/IntRo", "blue")`
+[![R build status](https://github.com/Nicolas-Schmidt/BayesMFSurv/workflows/R-CMD-check/badge.svg)](https://github.com/Nicolas-Schmidt/BayesMFSurv/actions)
 [![Project Status: Active â€“ The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Travis build status](https://travis-ci.com/Nicolas-Schmidt/BayesMFSurv.svg?branch=master)](https://travis-ci.com/Nicolas-Schmidt/BayesMFSurv)
 [![CRAN RStudio mirrordownloads](https://cranlogs.r-pkg.org/badges/grand-total/BayesMFSurv?color=blue)](https://www.r-pkg.org/pkg/BayesMFSurv)
