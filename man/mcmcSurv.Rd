@@ -62,6 +62,7 @@ model2 <- mcmcsurv(Y = Y, Y0 = Y0, C =  C,  X = X,
                    w = c(0.5, 0.5, 0.5),
                    m = 5,
                    form = "Weibull")
-summary(model2)
+
+summary(model2, parameter = "betas")
 
 }

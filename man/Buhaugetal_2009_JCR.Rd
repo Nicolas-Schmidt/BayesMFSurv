@@ -4,7 +4,9 @@
 \name{Buhaugetal_2009_JCR}
 \alias{Buhaugetal_2009_JCR}
 \title{Buhaugetal_2009_JCR}
-\format{A data frame with 1562 rows and 13 variables}
+\format{
+A data frame with 1562 rows and 13 variables
+}
 \source{
 Buhaug, Halvard, Scott Gates, and Päivi Lujala (2009), Geography, rebel capability, and the duration of civil conflict,  Journal of Conflict Resolution 53(4), 544 - 569.
 }

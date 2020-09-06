@@ -239,4 +239,21 @@ To cite package`BayesMFSurv` in publications, please use:
 
 ``` r
 citation(package = 'BayesMFSurv')
+#> 
+#> To cite BayesMFSurv in publications use:
+#> 
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Article{,
+#>     title = {BayesMFSurv: An R Package to Estimate Bayesian Split-Population Survival Models With (and Without) Misclassified Failure Events},
+#>     author = {Minnie M. Joo and Nicolás Schmidt and Sergio Béjar and Vineeta Yadav and Bumba Mukherjee},
+#>     journal = {Journal of Open Source Software},
+#>     year = {2020},
+#>     volume = {5},
+#>     number = {48},
+#>     pages = {2164},
+#>     publisher = {The Open Journal},
+#>     url = {https://doi.org/10.21105/joss.02164},
+#>   }
 ```

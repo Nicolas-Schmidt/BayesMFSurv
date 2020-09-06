@@ -153,7 +153,7 @@ summary(model2, parameter = c("betas"))
 
 To cite package`BayesMFSurv` in publications, please use:
 
-```r
+```{r}
 citation(package = 'BayesMFSurv')
 ```
 

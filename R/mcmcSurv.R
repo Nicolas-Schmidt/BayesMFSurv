@@ -30,7 +30,8 @@
 #'                    w = c(0.5, 0.5, 0.5),
 #'                    m = 5,
 #'                    form = "Weibull")
-#' summary(model2)
+#'
+#' summary(model2, parameter = "betas")
 #'
 #' @export
 mcmcsurv <- function(Y, Y0,C, X, N, burn, thin, w = c(1, 1, 1), m = 10, form) {

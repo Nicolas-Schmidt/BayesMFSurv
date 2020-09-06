@@ -1,0 +1,17 @@
+citHeader("To cite BayesMFSurv in publications use:")
+
+citEntry(
+  entry     = "Article",
+  title     = "BayesMFSurv: An R Package to Estimate Bayesian Split-Population Survival Models With (and Without) Misclassified Failure Events",
+  author    = "Minnie M. Joo,  Nicolás Schmidt,  Sergio Béjar, Vineeta Yadav, Bumba Mukherjee",
+  journal   = "Journal of Open Source Software",
+  year      = 2020,
+  volume    = 5,
+  number    = 48,
+  pages     = 2164,
+  publisher = "The Open Journal",
+  url       = "https://doi.org/10.21105/joss.02164",
+  textVersion = paste(
+
+  )
+)
